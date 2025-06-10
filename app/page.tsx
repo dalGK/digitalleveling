@@ -1,26 +1,27 @@
-import Hero from "@/components/hero"
-import Services from "@/components/services"
-import Technologies from "@/components/technologies"
-import Testimonials from "@/components/testimonials"
-import Portfolio from "@/components/portfolio"
-import About from "@/components/about"
-import Contact from "@/components/contact"
-import Features from "@/components/features"
-import Sustainability from "@/components/sustainability"
+import Hero from "@/components/sections/Hero"
+import About from "@/components/sections/About"
+import Services from "@/components/sections/Services"
+import Process from "@/components/sections/Process"
+import Portfolio from "@/components/sections/Portfolio"
+import Testimonials from "@/components/sections/Testimonials"
+import Stats from "@/components/sections/Stats"
+import FAQ from "@/components/sections/FAQ"
+import Contact from "@/components/sections/Contact"
+import CTA from "@/components/sections/CTA"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center">
+    <main className="min-h-screen bg-black overflow-x-hidden">
       <Hero />
-      <Services />
-      <Technologies />
-      <Testimonials />
-      <Portfolio />
       <About />
-      <Features />
-      <Sustainability />
+      <Services />
+      <Process />
+      {/*<Stats />*/}
+      {/* <Portfolio />*/}
+      {/* <Testimonials >*/}
+      <FAQ />
+      <CTA />
       <Contact />
     </main>
   )
 }
-
