@@ -1,38 +1,34 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist } from "next/font/google"
+import { Montserrat } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
+import Header from "@/components/layout/Header"
+import Footer from "@/components/layout/Footer"
+import BackgroundEffects from "@/components/ui/BackgroundEffects"
+import ScrollToTop from "@/components/ui/ScrollToTop"
 
-const geist = Geist({ subsets: ["latin"] })
+const montserrat = Montserrat({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Digital Leveling | Servicios Informáticos",
-  description:
-    "Empresa especializada en desarrollo web, cloud computing, automatización y consultoría tecnológica. Transformamos digitalmente a nuestros clientes con soluciones innovadoras.",
+  title: "Digital Leveling - Subir de nivel tu negocio en internet",
+  description: "Desarrollo web profesional y consultoría digital para hacer crecer tu negocio online",
     generator: 'v0.dev'
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="es" suppressHydrationWarning>
-      <body className={`${geist.className} dark`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
-          <Header />
-          {children}
-          <Footer />
-        </ThemeProvider>
+    <html lang="es">
+      <body className={`${montserrat.className} bg-black text-white`}>
+        <BackgroundEffects />
+        <Header />
+        {children}
+        <Footer />
+        <ScrollToTop />
       </body>
     </html>
   )
 }
-
-
-
-import './globals.css'
