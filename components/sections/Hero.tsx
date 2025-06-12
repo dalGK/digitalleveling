@@ -243,9 +243,7 @@ export default function Hero() {
             {/* <Link href="/#portfolio" className="btn-secondary text-lg">
             👀 Ver Proyectos
           </Link>*/}
-            <Link href="/#about" className="btn-ghost">
-              📖 Conocer Más
-            </Link>
+           
           </motion.div>
 
           {/* Stats Preview */}

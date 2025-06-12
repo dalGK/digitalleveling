@@ -141,12 +141,7 @@ export default function Services() {
 
                   <div className="flex justify-between items-center">
                     <span className="text-2xl font-bold gradient-text">{service.price}</span>
-                    <Link
-                      href={`/solicitar/${service.id}`}
-                      className="bg-yellow-400 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition-colors"
-                    >
-                      Solicitar
-                    </Link>
+                   
                   </div>
                 </div>
               </div>
@@ -162,7 +157,7 @@ export default function Services() {
           className="text-center mt-16"
         >
           <p className="text-gray-400 mb-6">¿No encuentras lo que buscas?</p>
-          <Link href="/consulta-personalizada" className="btn-primary text-lg">
+          <Link href="/agendar-llamada" className="btn-primary text-lg">
             💬 Consulta Personalizada
           </Link>
         </motion.div>

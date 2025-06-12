@@ -27,7 +27,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     "web-development": {
       title: "Desarrollo Web Completo",
       description: "Sitios web modernos, rápidos y optimizados",
-      basePrice: "$1,500",
+      basePrice: "600€",
       duration: "2-6 semanas",
       features: [
         "Diseño responsive",
@@ -43,7 +43,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     ecommerce: {
       title: "E-commerce Avanzado",
       description: "Tiendas online completas con gestión integral",
-      basePrice: "$2,500",
+      basePrice: "1,000€",
       duration: "4-8 semanas",
       features: [
         "Catálogo de productos",
@@ -59,7 +59,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     "web-app": {
       title: "Aplicación Web",
       description: "Apps web progresivas y escalables",
-      basePrice: "$3,000",
+      basePrice: "1000€",
       duration: "6-12 semanas",
       features: [
         "Aplicación web progresiva (PWA)",
@@ -75,7 +75,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     marketing: {
       title: "Marketing Digital",
       description: "Estrategias completas de marketing online",
-      basePrice: "$800",
+      basePrice: "300€",
       duration: "Mensual",
       features: [
         "Estrategia de contenido",
@@ -91,7 +91,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     consulting: {
       title: "Consultoría Digital",
       description: "Asesoramiento estratégico personalizado",
-      basePrice: "$500",
+      basePrice: "300€",
       duration: "1-4 semanas",
       features: [
         "Auditoría digital completa",
@@ -107,7 +107,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     "social-media": {
       title: "Gestión de Redes Sociales",
       description: "Administración completa de redes sociales",
-      basePrice: "$600",
+      basePrice: "100€",
       duration: "Mensual",
       features: [
         "Gestión de contenido",
@@ -301,7 +301,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
                       type="tel"
                       id="phone"
                       className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-xl focus:border-yellow-400 focus:outline-none transition-colors text-white"
-                      placeholder="+54 9 11 1234-5678"
+                      placeholder="+34 614 47 31 97"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />

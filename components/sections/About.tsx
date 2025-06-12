@@ -78,9 +78,7 @@ export default function About() {
               viewport={{ once: true }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Link href="/trabajar-juntos" className="btn-primary">
-                🚀 Trabajar Juntos
-              </Link>
+              
               <Link href="/agendar-llamada" className="btn-secondary">
                 📞 Agendar Llamada
               </Link>

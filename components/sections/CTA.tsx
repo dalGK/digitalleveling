@@ -85,11 +85,7 @@ export default function CTA() {
             viewport={{ once: true }}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/agendar-llamada" className="btn-primary text-xl px-12 py-5">
-                🚀 Comenzar Ahora
-              </Link>
-            </motion.div>
+
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link href="/agendar-llamada" className="btn-secondary text-xl px-12 py-5">

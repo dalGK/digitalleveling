@@ -59,7 +59,7 @@ export default function Header() {
           <button onClick={handleCalendlyClick} className="btn-ghost">
             Consulta Gratis
           </button>
-          <Link href="/trabajar-juntos" className="btn-primary">
+          <Link href="/agendar-llamada" className="btn-primary">
             Ver Planes
           </Link>
         </div>
@@ -92,7 +92,7 @@ export default function Header() {
                 <button onClick={handleCalendlyClick} className="btn-ghost text-center">
                   Consulta Gratis
                 </button>
-                <Link href="/trabajar-juntos" className="btn-primary text-center">
+                <Link href="/agendar-llamada" className="btn-primary text-center">
                   Ver Planes
                 </Link>
               </div>

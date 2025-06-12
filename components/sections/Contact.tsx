@@ -29,12 +29,32 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulación de envío (reemplazar con Formspree)
-    setTimeout(() => {
-      setSubmitStatus("success")
-      setFormData({ name: "", email: "", phone: "", company: "", service: "", budget: "", message: "" })
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name:    formData.name,
+          email:   formData.email,
+          phone:   formData.phone,
+          company: formData.company,
+          service: formData.service,
+          budget:  formData.budget,
+          message: formData.message,
+        }),
+      })
+      const result = await response.json()
+      if (result.success) {
+        setSubmitStatus("success")
+        setFormData({ name: "", email: "", phone: "", company: "", service: "", budget: "", message: "" })
+      } else {
+        setSubmitStatus("error")
+      }
+    } catch {
+      setSubmitStatus("error")
+    } finally {
       setIsSubmitting(false)
-    }, 2000)
+    }
   }
 
   const contactMethods = [

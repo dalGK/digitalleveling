@@ -275,7 +275,7 @@ export default function ScheduleCall() {
                       type="tel"
                       id="phone"
                       className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-xl focus:border-yellow-400 focus:outline-none transition-colors text-white"
-                      placeholder="+54 9 11 1234-5678"
+                      placeholder="+34 614 47 31 97"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
@@ -324,7 +324,7 @@ export default function ScheduleCall() {
                 <p className="text-sm text-gray-400 mb-4">¿Prefieres contacto directo?</p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <a
-                    href="https://wa.me/5491161234567?text=Hola!%20Me%20gustaría%20agendar%20una%20consulta%20gratuita%20para%20mi%20proyecto%20digital."
+                    href="https://wa.me/34614473197?text=Hola!%20Me%20gustaría%20agendar%20una%20consulta%20gratuita%20para%20mi%20proyecto%20digital."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-ghost text-sm flex items-center justify-center"
@@ -343,68 +343,7 @@ export default function ScheduleCall() {
             </div>
           </motion.div>
         </div>
-
-        {/* Calendly Widget Embed Option */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-16"
-        >
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-4">O agenda directamente aquí</h3>
-            <p className="text-gray-400">Calendario integrado - sin salir de la página</p>
-          </div>
-
-          <div className="glass-effect rounded-2xl p-4 max-w-4xl mx-auto">
-            <CalendlyWidget />
-          </div>
-        </motion.div>
       </div>
     </section>
-  )
-}
-
-// Componente separado para el widget de Calendly
-const CalendlyWidget = () => {
-  const [isLoaded, setIsLoaded] = useState(false)
-
-  useEffect(() => {
-    // Cargar el script de Calendly dinámicamente
-    const script = document.createElement("script")
-    script.src = "https://assets.calendly.com/assets/external/widget.js"
-    script.async = true
-    script.onload = () => setIsLoaded(true)
-    document.head.appendChild(script)
-
-    return () => {
-      // Limpiar el script al desmontar
-      const existingScript = document.querySelector(
-        'script[src="https://assets.calendly.com/assets/external/widget.js"]',
-      )
-      if (existingScript) {
-        document.head.removeChild(existingScript)
-      }
-    }
-  }, [])
-
-  if (!isLoaded) {
-    return (
-      <div className="flex items-center justify-center h-96 bg-gray-800/50 rounded-xl">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-400 mx-auto mb-4"></div>
-          <p className="text-gray-400">Cargando calendario...</p>
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div
-      className="calendly-inline-widget"
-      data-url="https://calendly.com/leveling-digi/30min?hide_gdpr_banner=1&primary_color=fec73f"
-      style={{ minWidth: "320px", height: "700px" }}
-    />
   )
 }

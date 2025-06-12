@@ -322,7 +322,7 @@ export default function CustomConsultation() {
                       type="tel"
                       id="phone"
                       className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-xl focus:border-yellow-400 focus:outline-none transition-colors text-white"
-                      placeholder="+54 9 11 1234-5678"
+                      placeholder="+34 614 47 31 97"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
