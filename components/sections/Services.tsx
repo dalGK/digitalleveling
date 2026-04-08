@@ -11,7 +11,7 @@ const services = [
     title: "Desarrollo Web Completo",
     description: "Sitios web modernos, rápidos y optimizados con las últimas tecnologías.",
     features: ["React & Next.js", "Diseño Responsivo", "SEO Optimizado", "Performance 100%"],
-    price: "Desde 600€",
+    price: "Desde 300",
   },
   {
     id: "ecommerce",
@@ -19,7 +19,7 @@ const services = [
     title: "E-commerce Avanzado",
     description: "Tiendas online completas con gestión de inventario y pagos integrados.",
     features: ["Carrito Inteligente", "Pagos Seguros", "Panel Admin", "Analytics"],
-    price: "Desde 1,500€",
+    price: "Desde 1000€",
   },
   {
     id: "web-app",

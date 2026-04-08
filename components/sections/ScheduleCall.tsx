@@ -19,7 +19,7 @@ export default function ScheduleCall() {
   })
 
   // Tu URL real de Calendly
-  const CALENDLY_URL = "https://calendly.com/leveling-digi/30min"
+  const CALENDLY_URL = "https://cal.com/digitalleveling/30min"
 
   const callTypes = [
     {
@@ -122,7 +122,7 @@ export default function ScheduleCall() {
                 whileTap={{ scale: 0.98 }}
               >
                 <Calendar className="w-5 h-5 inline-block mr-2" />
-                Agendar en Calendly
+                Agendar en reunion
                 <ExternalLink className="w-4 h-4 inline-block ml-2" />
               </motion.button>
 
@@ -197,7 +197,7 @@ export default function ScheduleCall() {
             <div className="glass-effect rounded-3xl p-8">
               <h3 className="text-2xl font-bold mb-8 text-center">O completa este formulario</h3>
               <p className="text-center text-gray-400 mb-8">
-                Completa tus datos y serás redirigido a Calendly con la información pre-cargada
+                Completa tus datos y serás redirigido con la información pre-cargada
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -316,7 +316,7 @@ export default function ScheduleCall() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <Calendar className="w-5 h-5 inline-block mr-2" />
-                  Continuar en Calendly
+                  Continuar con la reserva
                 </motion.button>
               </form>
 
