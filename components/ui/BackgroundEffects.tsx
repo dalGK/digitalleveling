@@ -1,8 +1,29 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+
+type Particle = {
+  left: number
+  top: number
+  duration: number
+  delay: number
+}
 
 export default function BackgroundEffects() {
+  const [particles, setParticles] = useState<Particle[]>([])
+
+  useEffect(() => {
+    const generatedParticles = Array.from({ length: 50 }, () => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      duration: Math.random() * 10 + 10,
+      delay: Math.random() * 10,
+    }))
+
+    setParticles(generatedParticles)
+  }, [])
+
   return (
     <div className="fixed inset-0 pointer-events-none z-0">
       {/* Gradient Orbs */}
@@ -49,22 +70,22 @@ export default function BackgroundEffects() {
       />
 
       {/* Floating Particles */}
-      {Array.from({ length: 50 }).map((_, i) => (
+      {particles.map((particle, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 bg-yellow-400/30 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${particle.left}%`,
+            top: `${particle.top}%`,
           }}
           animate={{
             y: [0, -100, 0],
             opacity: [0, 1, 0],
           }}
           transition={{
-            duration: Math.random() * 10 + 10,
+            duration: particle.duration,
             repeat: Number.POSITIVE_INFINITY,
-            delay: Math.random() * 10,
+            delay: particle.delay,
           }}
         />
       ))}
@@ -75,9 +96,9 @@ export default function BackgroundEffects() {
           className="w-full h-full"
           style={{
             backgroundImage: `
-            linear-gradient(rgba(254, 199, 63, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(254, 199, 63, 0.1) 1px, transparent 1px)
-          `,
+              linear-gradient(rgba(254, 199, 63, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(254, 199, 63, 0.1) 1px, transparent 1px)
+            `,
             backgroundSize: "50px 50px",
           }}
         />
