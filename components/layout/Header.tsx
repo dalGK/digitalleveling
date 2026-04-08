@@ -24,7 +24,7 @@ export default function Header() {
   ]
 
   const handleCalendlyClick = () => {
-    window.open("https://calendly.com/leveling-digi/30min", "_blank")
+    window.open("https://cal.com/digitalleveling/30min", "_blank")
   }
 
   return (
