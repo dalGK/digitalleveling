@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Facebook, Twitter, Linkedin, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react"
+import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -37,14 +37,15 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-bold mb-6 text-yellow-400">Enlaces Rápidos</h4>
+            <h4 className="text-xl font-bold mb-6 text-yellow-400">Servicios</h4>
             <ul className="space-y-3">
               {[
-                { href: "/", label: "Inicio" },
-                { href: "/#about", label: "Nosotros" },
-                { href: "/#services", label: "Servicios" },
-
-                { href: "/#contact", label: "Contacto" },
+                { href: "/servicios/desarrollo-web-madrid", label: "Desarrollo Web Madrid" },
+                { href: "/servicios/ecommerce", label: "E-commerce y Tiendas Online" },
+                { href: "/servicios/aplicaciones-web", label: "Aplicaciones Web" },
+                { href: "/servicios/marketing-digital", label: "Marketing Digital" },
+                { href: "/servicios/consultoria-digital", label: "Consultoría Digital" },
+                { href: "/servicios/gestion-redes-sociales", label: "Redes Sociales" },
               ].map((link, index) => (
                 <li key={index}>
                   <Link
@@ -73,7 +74,7 @@ export default function Footer() {
               <li className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-yellow-400 mt-1" />
                 <div>
-                  <p className="text-gray-300">++34 614 47 31 97</p>
+                  <p className="text-gray-300">+34 614 47 31 97</p>
                   <p className="text-gray-500 text-sm">Lun - Vie, 9:00 - 18:00</p>
                 </div>
               </li>

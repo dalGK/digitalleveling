@@ -204,22 +204,32 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-8xl font-bold mb-6 leading-tight">
-            <span className="gradient-text text-shadow">Subir de nivel</span>
+          <h1 className="text-5xl md:text-8xl font-bold mb-4 leading-tight">
+            <span className="gradient-text text-shadow">Agencia de</span>
             <br />
-            <span className="text-white">tu negocio</span>
+            <span className="text-white">Desarrollo Web</span>
             <br />
+            <span className="gradient-text">en Madrid</span>
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-lg md:text-xl text-yellow-400 font-semibold mb-4"
+          >
+            Tu negocio{" "}
             <motion.span
               key={currentWord}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="gradient-text"
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+              className="inline-block"
             >
               {words[currentWord]}
             </motion.span>
-          </h1>
+          </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -227,8 +237,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
           >
-            Desarrollo web de vanguardia, consultoría digital estratégica y soluciones tecnológicas que impulsan el
-            crecimiento exponencial de tu empresa
+            Desarrollo web profesional con Next.js y React, consultoría digital estratégica y soluciones tecnológicas
+            para empresas en España y Latinoamérica
           </motion.p>
 
           <motion.div

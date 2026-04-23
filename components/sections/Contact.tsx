@@ -70,7 +70,7 @@ export default function Contact() {
       title: "Teléfono",
       value: "+34 614 473 197",
       description: "Lun - Vie, 9:00 - 18:00",
-      action: "tel:+",
+      action: "tel:+34614473197",
     },
     {
       icon: MessageSquare,

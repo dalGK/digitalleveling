@@ -265,7 +265,7 @@ npm run build && aws s3 sync out/ s3://digitalleveling-website --delete
 
 Para soporte técnico o consultas:
 - Email: leveling.digi@gmail.com
-- WhatsApp: ++34 614 47 31 97
+- WhatsApp: +34 614 47 31 97
 
 ## 📄 Licencia
 
