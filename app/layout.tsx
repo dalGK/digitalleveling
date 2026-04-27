@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer"
 import BackgroundEffects from "@/components/ui/BackgroundEffects"
 import ScrollToTop from "@/components/ui/ScrollToTop"
 import SchemaOrg from "@/components/seo/SchemaOrg"
+import WhatsAppButton from "@/components/ui/WhatsAppButton"
 
 const montserrat = Montserrat({ subsets: ["latin"] })
 
@@ -95,6 +96,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <ScrollToTop />
+        <WhatsAppButton />
       </body>
     </html>
   )
