@@ -164,7 +164,7 @@ export default function Hero() {
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
-  const words = ["Innovador", "Profesional", "Exitoso", "Digital"]
+  const words = ["crece online", "posiciona en Google", "capta más clientes", "escala su negocio"]
   const [currentWord, setCurrentWord] = useState(0)
 
   useEffect(() => {
@@ -175,7 +175,7 @@ export default function Hero() {
   }, [])
 
   const handleCalendlyClick = () => {
-    window.open("https://cal.com/digitalleveling/30min", "_blank")
+    window.open("https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita", "_blank")
   }
 
   return (
@@ -200,16 +200,16 @@ export default function Hero() {
             className="mb-6"
           >
             <span className="inline-block bg-yellow-400/20 text-yellow-400 px-6 py-2 rounded-full text-sm font-semibold border border-yellow-400/30">
-              🚀 Transformamos tu presencia digital
+              Diseño Web · SEO · Aplicaciones a Medida
             </span>
           </motion.div>
 
           <h1 className="text-5xl md:text-8xl font-bold mb-4 leading-tight">
-            <span className="gradient-text text-shadow">Agencia de</span>
+            <span className="gradient-text text-shadow">Diseño Web</span>
             <br />
-            <span className="text-white">Desarrollo Web</span>
+            <span className="text-white">y SEO para</span>
             <br />
-            <span className="gradient-text">en Madrid</span>
+            <span className="gradient-text">Empresas</span>
           </h1>
 
           <motion.p
@@ -237,8 +237,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
           >
-            Desarrollo web profesional con Next.js y React, consultoría digital estratégica y soluciones tecnológicas
-            para empresas en España y Latinoamérica
+            Creamos páginas web profesionales y estrategias SEO para negocios que quieren captar más clientes.
+            Trabajamos con empresas en España e internacionalmente.
           </motion.p>
 
           <motion.div
@@ -248,12 +248,11 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
           >
             <button onClick={handleCalendlyClick} className="btn-primary text-lg">
-              🚀 Agendar Llamada
+              Consulta Gratuita
             </button>
-            {/* <Link href="/#portfolio" className="btn-secondary text-lg">
-            👀 Ver Proyectos
-          </Link>*/}
-           
+            <Link href="/#services" className="btn-secondary text-lg">
+              Ver Servicios
+            </Link>
           </motion.div>
 
           {/* Stats Preview */}

@@ -2,28 +2,28 @@ import type { Metadata } from "next"
 import ServicePage from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
-  title: "Desarrollo Web en Madrid | Páginas Web Profesionales con Next.js",
+  title: "Diseño y Desarrollo Web para Empresas en España | Digital Leveling",
   description:
-    "Empresa de desarrollo web en Madrid. Creamos páginas web profesionales con Next.js y React. Diseño responsivo, SEO optimizado y velocidad de carga máxima. Desde 300€. Presupuesto gratis.",
+    "Diseño y desarrollo web profesional para empresas en España. Creamos páginas web con Next.js y React, optimizadas para SEO y conversión. Proyectos en toda España e internacionalmente. Desde 300€.",
   keywords: [
+    "diseño web españa",
+    "desarrollo web españa",
+    "páginas web para empresas",
+    "diseño web profesional",
     "desarrollo web madrid",
-    "empresa desarrollo web madrid",
     "diseño web madrid",
-    "crear página web madrid",
-    "paginas web profesionales madrid",
-    "next.js madrid",
-    "react madrid",
-    "desarrollo web profesional",
-    "agencia web madrid",
-    "presupuesto web madrid",
+    "crear página web empresa",
+    "agencia web españa",
+    "next.js españa",
+    "web profesional negocio",
   ],
   alternates: {
     canonical: "https://digitalleveling.com/servicios/desarrollo-web-madrid",
   },
   openGraph: {
-    title: "Desarrollo Web en Madrid | Digital Leveling",
+    title: "Diseño y Desarrollo Web para Empresas en España | Digital Leveling",
     description:
-      "Empresa de desarrollo web en Madrid especializada en Next.js y React. Diseño web profesional, responsivo y optimizado para SEO. Desde 300€.",
+      "Diseño web profesional para empresas en España con Next.js y React. Páginas web rápidas, responsivas y optimizadas para posicionar en Google. Desde 300€.",
     url: "https://digitalleveling.com/servicios/desarrollo-web-madrid",
   },
 }
@@ -114,19 +114,19 @@ const faqs = [
 export default function DesarrolloWebMadridPage() {
   return (
     <ServicePage
-      badge="🌐 Desarrollo Web Madrid"
-      title="Desarrollo Web Profesional"
-      titleHighlight="en Madrid"
-      subtitle="Next.js · React · Diseño Responsivo · SEO Incluido"
-      description="Creamos páginas web rápidas, modernas y optimizadas para Google. Desde landing pages hasta sitios corporativos completos. Trabajamos con empresas en Madrid, toda España y Latinoamérica."
+      badge="🌐 Diseño y Desarrollo Web"
+      title="Diseño Web Profesional"
+      titleHighlight="para Empresas en España"
+      subtitle="Next.js · React · Diseño Responsivo · SEO Técnico Incluido"
+      description="Creamos páginas web rápidas, modernas y optimizadas para Google. Desde landing pages hasta sitios corporativos completos. Trabajamos con empresas en España e internacionalmente."
       features={features}
       faqs={faqs}
       price="Desde 300€ · Presupuesto personalizado en 24 horas"
-      ctaText="Solicitar presupuesto gratis"
+      ctaText="Solicitar presupuesto gratuito"
       relatedServices={[
+        { href: "/servicios/seo", label: "🔍 SEO y Posicionamiento Web" },
+        { href: "/servicios/aplicaciones-web", label: "⚙️ Aplicaciones Web a Medida" },
         { href: "/servicios/ecommerce", label: "🛒 E-commerce" },
-        { href: "/servicios/aplicaciones-web", label: "📱 Aplicaciones Web" },
-        { href: "/servicios/consultoria-digital", label: "🚀 Consultoría Digital" },
         { href: "/servicios/marketing-digital", label: "📈 Marketing Digital" },
       ]}
     />

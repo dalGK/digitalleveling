@@ -59,12 +59,22 @@ export default function ServicePage({
             <p className="text-xl text-yellow-400 font-semibold mb-4">{subtitle}</p>
             <p className="text-xl text-gray-300 leading-relaxed mb-10">{description}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/agendar-llamada" className="btn-primary text-lg">
+              <a
+                href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-lg"
+              >
                 🚀 {ctaText}
-              </Link>
-              <Link href="/#contact" className="btn-secondary text-lg">
-                💬 Hablar con un experto
-              </Link>
+              </a>
+              <a
+                href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-lg"
+              >
+                💬 Hablar por WhatsApp
+              </a>
             </div>
           </motion.div>
         </div>
@@ -174,9 +184,14 @@ export default function ServicePage({
             <p className="text-gray-300 text-xl mb-10">
               Cuéntanos tu proyecto y te respondemos en menos de 24 horas con una propuesta personalizada.
             </p>
-            <Link href="/agendar-llamada" className="btn-primary text-lg">
-              🚀 Solicitar presupuesto gratuito
-            </Link>
+            <a
+              href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-lg"
+            >
+              🚀 Solicitar presupuesto por WhatsApp
+            </a>
           </motion.div>
         </div>
       </section>

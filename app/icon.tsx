@@ -31,6 +31,6 @@ export default function Icon() {
         </span>
       </div>
     ),
-    { ...size }
+    { ...size, fonts: [] }
   )
 }

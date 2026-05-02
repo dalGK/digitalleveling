@@ -23,35 +23,39 @@ export default function About() {
               className="mb-6"
             >
               <span className="inline-block bg-yellow-400/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-semibold">
-                💡 Sobre Nosotros
+                Sobre Digital Leveling
               </span>
             </motion.div>
 
             <h2 className="text-4xl md:text-6xl font-bold mb-8">
-              Expertos en <span className="gradient-text">Transformación Digital</span>
+              Especialistas en <span className="gradient-text">Diseño Web y SEO</span> para Negocios
             </h2>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Somos un equipo apasionado de desarrolladores, diseñadores y estrategas digitales con más de 5 años de
-              experiencia ayudando a empresas a alcanzar su máximo potencial online.
+              Ayudamos a negocios y marcas a crecer en internet diseñando webs profesionales y desarrollando
+              estrategias SEO que generan resultados reales. Trabajamos con empresas en España y con clientes
+              de todo el mundo.
             </p>
 
             <div className="space-y-6 mb-8">
               {[
                 {
-                  icon: "🎯",
-                  title: "Enfoque Estratégico",
-                  description: "Cada proyecto comienza con un análisis profundo de tus objetivos y mercado.",
+                  icon: "🌐",
+                  title: "Webs que Posicionan y Convierten",
+                  description:
+                    "Cada web que creamos está diseñada para aparecer en Google y transformar visitas en clientes.",
                 },
                 {
-                  icon: "⚡",
-                  title: "Tecnología Avanzada",
-                  description: "Utilizamos las últimas tecnologías para crear soluciones escalables y eficientes.",
+                  icon: "🔍",
+                  title: "SEO Basado en Datos",
+                  description:
+                    "Estrategias SEO con análisis de competencia, keywords y resultados medibles mes a mes.",
                 },
                 {
                   icon: "🤝",
-                  title: "Soporte Continuo",
-                  description: "Te acompañamos en cada paso del proceso y más allá del lanzamiento.",
+                  title: "Relación Directa y Sin Burocracia",
+                  description:
+                    "Trato directo con quien trabaja tu proyecto. Sin intermediarios, con respuesta garantizada en 24h.",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -79,9 +83,14 @@ export default function About() {
               className="flex flex-col sm:flex-row gap-4"
             >
               
-              <Link href="/agendar-llamada" className="btn-secondary">
-                📞 Agendar Llamada
-              </Link>
+              <a
+                href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary"
+              >
+                📞 Consulta Gratuita
+              </a>
             </motion.div>
           </motion.div>
 
@@ -101,10 +110,10 @@ export default function About() {
               >
                 <div className="grid grid-cols-2 gap-6">
                   {[
-                    { icon: "🚀", label: "Innovación", value: "100%" },
-                    { icon: "⚡", label: "Velocidad", value: "99%" },
-                    { icon: "🎯", label: "Eficiencia", value: "98%" },
-                    { icon: "💎", label: "Calidad", value: "100%" },
+                    { icon: "🌍", label: "España + Internacional", value: "Alcance" },
+                    { icon: "⚡", label: "Next.js & React", value: "Stack" },
+                    { icon: "🔍", label: "SEO Avanzado", value: "Posicionamiento" },
+                    { icon: "💬", label: "Respuesta 24h", value: "Soporte" },
                   ].map((item, index) => (
                     <motion.div
                       key={index}
@@ -115,7 +124,7 @@ export default function About() {
                       className="text-center p-4 bg-black/30 rounded-xl"
                     >
                       <div className="text-3xl mb-2">{item.icon}</div>
-                      <div className="text-2xl font-bold gradient-text mb-1">{item.value}</div>
+                      <div className="text-xs font-bold gradient-text mb-1 uppercase tracking-wide">{item.value}</div>
                       <div className="text-sm text-gray-400">{item.label}</div>
                     </motion.div>
                   ))}

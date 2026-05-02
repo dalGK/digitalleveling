@@ -157,9 +157,14 @@ export default function Process() {
             <p className="text-gray-300 mb-6">
               Agenda una consulta gratuita y descubre cómo podemos transformar tu idea en realidad
             </p>
-            <Link href="/agendar-llamada" className="btn-primary text-lg">
-              📅 Agendar Consulta Gratis
-            </Link>
+            <a
+              href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-lg"
+            >
+              💬 Consulta Gratuita por WhatsApp
+            </a>
           </div>
         </motion.div>
       </div>

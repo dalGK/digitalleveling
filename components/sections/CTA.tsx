@@ -50,7 +50,7 @@ export default function CTA() {
             className="mb-8"
           >
             <span className="inline-block bg-yellow-400/20 text-yellow-400 px-6 py-3 rounded-full text-lg font-semibold border border-yellow-400/30">
-              🚀 ¡Es tu momento!
+              Para empresas en España e internacionalmente
             </span>
           </motion.div>
 
@@ -61,9 +61,10 @@ export default function CTA() {
             viewport={{ once: true }}
             className="text-5xl md:text-7xl font-bold mb-8 leading-tight"
           >
-            ¿Listo para <span className="gradient-text text-shadow">Transformar</span>
+            ¿Tu negocio necesita{" "}
+            <span className="gradient-text text-shadow">una web</span>
             <br />
-            tu Negocio Digital?
+            que posicione y venda?
           </motion.h2>
 
           <motion.p
@@ -73,9 +74,9 @@ export default function CTA() {
             viewport={{ once: true }}
             className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed"
           >
-            No esperes más. Cada día que pasa sin una presencia digital sólida es una oportunidad perdida.
+            Cuéntanos tu proyecto. Te respondemos en menos de 24 horas con una propuesta clara, sin compromiso.
             <br />
-            <span className="text-yellow-400 font-semibold">Comienza tu transformación digital hoy mismo.</span>
+            <span className="text-yellow-400 font-semibold">Primera consulta completamente gratuita.</span>
           </motion.p>
 
           <motion.div
@@ -88,9 +89,14 @@ export default function CTA() {
 
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/agendar-llamada" className="btn-secondary text-xl px-12 py-5">
+              <a
+                href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-xl px-12 py-5"
+              >
                 📞 Consulta Gratis
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
 
@@ -106,17 +112,17 @@ export default function CTA() {
               {
                 icon: "⚡",
                 title: "Respuesta en 24h",
-                description: "Te contactamos en menos de 24 horas",
+                description: "Te respondemos antes de 24 horas con una propuesta real",
               },
               {
                 icon: "🎯",
                 title: "Consulta Gratuita",
-                description: "Primera consulta completamente gratis",
+                description: "Primera sesión sin coste ni compromiso",
               },
               {
-                icon: "💎",
-                title: "Garantía Total",
-                description: "100% satisfacción garantizada",
+                icon: "🌍",
+                title: "España e Internacional",
+                description: "Trabajamos con negocios en España y en todo el mundo",
               },
             ].map((item, index) => (
               <motion.div

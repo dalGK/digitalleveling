@@ -236,9 +236,14 @@ export default function Portfolio() {
               Estos son solo algunos ejemplos. Cada proyecto es único y personalizado según las necesidades del cliente.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/agendar-llamada" className="btn-primary">
+              <a
+                href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
                 🚀 Crear Mi Proyecto
-              </Link>
+              </a>
               <Link href="/#portfolio" className="btn-secondary">
                 📋 Ver Más Proyectos
               </Link>

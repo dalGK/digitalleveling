@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h3 className="text-3xl font-bold gradient-text mb-6">Digital Leveling</h3>
             <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
-              Transformamos ideas en experiencias digitales excepcionales. Especializados en desarrollo web y consultoría digital para empresas que buscan destacar en el mundo online.
+              Diseño web y SEO para negocios que quieren crecer online. Trabajamos con empresas en España e internacionalmente.
             </p>
             <div className="flex space-x-4">
               {[
@@ -40,12 +40,12 @@ export default function Footer() {
             <h4 className="text-xl font-bold mb-6 text-yellow-400">Servicios</h4>
             <ul className="space-y-3">
               {[
-                { href: "/servicios/desarrollo-web-madrid", label: "Desarrollo Web Madrid" },
-                { href: "/servicios/ecommerce", label: "E-commerce y Tiendas Online" },
-                { href: "/servicios/aplicaciones-web", label: "Aplicaciones Web" },
+                { href: "/servicios/desarrollo-web-madrid", label: "Diseño y Desarrollo Web" },
+                { href: "/servicios/seo", label: "SEO y Posicionamiento Web" },
+                { href: "/servicios/aplicaciones-web", label: "Aplicaciones Web a Medida" },
+                { href: "/servicios/ecommerce", label: "E-commerce" },
                 { href: "/servicios/marketing-digital", label: "Marketing Digital" },
                 { href: "/servicios/consultoria-digital", label: "Consultoría Digital" },
-                { href: "/servicios/gestion-redes-sociales", label: "Redes Sociales" },
               ].map((link, index) => (
                 <li key={index}>
                   <Link

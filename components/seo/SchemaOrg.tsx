@@ -12,7 +12,7 @@ export default function SchemaOrg() {
       height: 60,
     },
     description:
-      "Agencia de desarrollo web en Madrid especializada en Next.js, React y e-commerce. Consultoría digital para empresas en España y Latinoamérica.",
+      "Agencia de diseño web y SEO para empresas en España. Creamos páginas web profesionales y estrategias de posicionamiento para negocios que quieren captar más clientes. Trabajamos en España e internacionalmente.",
     foundingDate: "2020",
     contactPoint: [
       {
@@ -21,7 +21,7 @@ export default function SchemaOrg() {
         contactType: "customer service",
         email: "leveling.digi@gmail.com",
         availableLanguage: ["Spanish", "English"],
-        areaServed: ["ES", "MX", "AR", "CO", "CL", "PE", "VE", "UY"],
+        areaServed: ["ES", "GB", "US", "FR", "DE", "IT", "MX", "AR", "CO"],
       },
     ],
     sameAs: [
@@ -51,7 +51,7 @@ export default function SchemaOrg() {
     currenciesAccepted: "EUR",
     paymentAccepted: "Cash, Credit Card, Bank Transfer",
     description:
-      "Agencia de desarrollo web profesional en Madrid. Diseño web, tiendas online, aplicaciones web y marketing digital.",
+      "Agencia de diseño web y SEO para empresas en España. Páginas web profesionales, posicionamiento en Google y soluciones digitales a medida.",
     address: {
       "@type": "PostalAddress",
       streetAddress: "General Ricardos",
@@ -81,29 +81,30 @@ export default function SchemaOrg() {
       },
       {
         "@type": "Country",
-        name: "México",
+        name: "United Kingdom",
       },
       {
         "@type": "Country",
-        name: "Argentina",
+        name: "United States",
       },
       {
         "@type": "Country",
-        name: "Colombia",
+        name: "France",
       },
       {
         "@type": "Country",
-        name: "Chile",
+        name: "Mexico",
       },
     ],
     serviceType: [
-      "Desarrollo Web",
       "Diseño Web",
+      "Desarrollo Web",
+      "SEO",
+      "Posicionamiento Web",
+      "Aplicaciones Web a Medida",
       "E-commerce",
-      "Aplicaciones Web",
       "Marketing Digital",
       "Consultoría Digital",
-      "Gestión de Redes Sociales",
     ],
     aggregateRating: {
       "@type": "AggregateRating",
@@ -168,10 +169,10 @@ export default function SchemaOrg() {
       },
       {
         "@type": "Question",
-        name: "¿Trabajan con clientes de Latinoamérica?",
+        name: "¿Trabajáis con clientes fuera de España?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sí, trabajamos con clientes de todo el mundo, especialmente España, México, Argentina, Colombia y Chile. Tenemos experiencia en proyectos internacionales y nos adaptamos a diferentes zonas horarias.",
+          text: "Sí, trabajamos con clientes de todo el mundo. Además de nuestro mercado principal en España, tenemos experiencia en proyectos internacionales y nos adaptamos a diferentes zonas horarias e idiomas.",
         },
       },
       {
@@ -191,7 +192,7 @@ export default function SchemaOrg() {
     "@id": "https://digitalleveling.com/#website",
     url: "https://digitalleveling.com",
     name: "Digital Leveling",
-    description: "Agencia de desarrollo web en Madrid para España y Latinoamérica",
+    description: "Agencia de diseño web y SEO para empresas en España e internacionalmente",
     publisher: {
       "@id": "https://digitalleveling.com/#organization",
     },

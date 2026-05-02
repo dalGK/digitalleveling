@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Dalvi\\\\Documents\\\\WEBS\\\\digitalLeveling\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(npx tsc *)"
     ]
   }
 }

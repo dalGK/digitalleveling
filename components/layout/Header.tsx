@@ -18,13 +18,14 @@ export default function Header() {
 
   const menuItems = [
     { href: "/", label: "Inicio" },
-    { href: "/#about", label: "Nosotros" },
-    { href: "/#services", label: "Servicios" },
+    { href: "/servicios/desarrollo-web-madrid", label: "Desarrollo Web" },
+    { href: "/servicios/seo", label: "SEO" },
+    { href: "/servicios/aplicaciones-web", label: "Aplicaciones" },
     { href: "/#contact", label: "Contacto" },
   ]
 
   const handleCalendlyClick = () => {
-    window.open("https://cal.com/digitalleveling/30min", "_blank")
+    window.open("https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita", "_blank")
   }
 
   return (
@@ -59,8 +60,8 @@ export default function Header() {
           <button onClick={handleCalendlyClick} className="btn-ghost">
             Consulta Gratis
           </button>
-          <Link href="/agendar-llamada" className="btn-primary">
-            Ver Planes
+          <Link href="/servicios" className="btn-primary">
+            Ver Servicios
           </Link>
         </div>
 
@@ -92,8 +93,8 @@ export default function Header() {
                 <button onClick={handleCalendlyClick} className="btn-ghost text-center">
                   Consulta Gratis
                 </button>
-                <Link href="/agendar-llamada" className="btn-primary text-center">
-                  Ver Planes
+                <Link href="/servicios" className="btn-primary text-center">
+                  Ver Servicios
                 </Link>
               </div>
             </div>
