@@ -152,7 +152,7 @@ export default function Process() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="glass-effect rounded-2xl p-8 max-w-2xl mx-auto">
+          <div className="glass-effect rounded-2xl p-5 sm:p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">¿Listo para comenzar?</h3>
             <p className="text-gray-300 mb-6">
               Agenda una consulta gratuita y descubre cómo podemos transformar tu idea en realidad
@@ -161,7 +161,7 @@ export default function Process() {
               href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-lg"
+              className="btn-primary text-base sm:text-lg block w-full sm:inline-block sm:w-auto text-center"
             >
               💬 Consulta Gratuita por WhatsApp
             </a>
