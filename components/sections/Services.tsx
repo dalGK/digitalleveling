@@ -189,7 +189,7 @@ export default function Services() {
             href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary text-lg"
+            className="btn-primary text-base sm:text-lg block w-full sm:w-auto sm:inline-block"
           >
             💬 Consulta Personalizada Gratuita
           </a>
