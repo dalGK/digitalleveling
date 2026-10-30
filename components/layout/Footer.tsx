@@ -126,21 +126,6 @@ export default function Footer() {
             <p className="text-gray-400 text-center md:text-left">
               © {new Date().getFullYear()} Digital Leveling. Todos los derechos reservados.
             </p>
-            <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2">
-              {[
-                { href: "/aviso-legal", label: "Aviso Legal" },
-                { href: "/privacidad", label: "Política de Privacidad" },
-                { href: "/cookies", label: "Cookies" },
-              ].map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.href}
-                  className="text-gray-400 hover:text-yellow-400 transition-colors text-sm"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
       </div>

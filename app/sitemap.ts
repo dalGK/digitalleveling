@@ -16,9 +16,6 @@ const routes: Entry[] = [
   { path: "/agendar-llamada", priority: 0.7, changeFrequency: "monthly" },
   { path: "/consulta-personalizada", priority: 0.6, changeFrequency: "monthly" },
   { path: "/trabajar-juntos", priority: 0.6, changeFrequency: "monthly" },
-  { path: "/aviso-legal", priority: 0.2, changeFrequency: "yearly" },
-  { path: "/privacidad", priority: 0.2, changeFrequency: "yearly" },
-  { path: "/cookies", priority: 0.2, changeFrequency: "yearly" },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
