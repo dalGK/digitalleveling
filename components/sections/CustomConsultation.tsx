@@ -5,6 +5,9 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { Brain, Target, Lightbulb, TrendingUp, CheckCircle } from "lucide-react"
+import { contact } from "@/lib/site"
+import { submitContact } from "@/lib/submit-contact"
+import ConsentFields, { PrivacyNotice } from "@/components/forms/ConsentFields"
 
 export default function CustomConsultation() {
   const [selectedConsultationType, setSelectedConsultationType] = useState("strategy")
@@ -113,9 +116,34 @@ export default function CustomConsultation() {
 
   const selectedType = consultationTypes.find((type) => type.id === selectedConsultationType)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [consent, setConsent] = useState(false)
+  const [website, setWebsite] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Consulta personalizada:", formData)
+    setIsSubmitting(true)
+    const ok = await submitContact({
+      source: "Consulta personalizada",
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      service: selectedType ? `Consultoría: ${selectedType.name}` : "Consultoría",
+      budget: formData.budget,
+      details: {
+        Sector: formData.industry,
+        "Situación actual": formData.currentSituation,
+        Objetivos: formData.goals,
+        Desafíos: formData.challenges,
+        Plazo: formData.timeline,
+      },
+      consent,
+      website,
+    })
+    setSubmitStatus(ok ? "success" : "error")
+    setIsSubmitting(false)
   }
 
   return (
@@ -281,7 +309,7 @@ export default function CustomConsultation() {
             <div className="glass-effect rounded-3xl p-8">
               <h3 className="text-2xl font-bold mb-8 text-center">Solicitar Consultoría Personalizada</h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6 relative">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -322,7 +350,7 @@ export default function CustomConsultation() {
                       type="tel"
                       id="phone"
                       className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-xl focus:border-yellow-400 focus:outline-none transition-colors text-white"
-                      placeholder="+34 614 47 31 97"
+                      placeholder="+34 600 000 000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
@@ -354,15 +382,15 @@ export default function CustomConsultation() {
                     onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
                   >
                     <option value="">Seleccionar industria</option>
-                    <option value="technology">Tecnología</option>
-                    <option value="ecommerce">E-commerce</option>
-                    <option value="healthcare">Salud</option>
-                    <option value="finance">Finanzas</option>
-                    <option value="education">Educación</option>
-                    <option value="retail">Retail</option>
-                    <option value="manufacturing">Manufactura</option>
-                    <option value="services">Servicios</option>
-                    <option value="other">Otro</option>
+                    <option value="Tecnología">Tecnología</option>
+                    <option value="E-commerce">E-commerce</option>
+                    <option value="Salud">Salud</option>
+                    <option value="Finanzas">Finanzas</option>
+                    <option value="Educación">Educación</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Manufactura">Manufactura</option>
+                    <option value="Servicios">Servicios</option>
+                    <option value="Otro">Otro</option>
                   </select>
                 </div>
 
@@ -422,10 +450,10 @@ export default function CustomConsultation() {
                       onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
                     >
                       <option value="">Seleccionar plazo</option>
-                      <option value="immediate">Inmediato (esta semana)</option>
-                      <option value="short">Corto plazo (1 mes)</option>
-                      <option value="medium">Mediano plazo (3 meses)</option>
-                      <option value="long">Largo plazo (6+ meses)</option>
+                      <option value="Inmediato (esta semana)">Inmediato (esta semana)</option>
+                      <option value="Corto plazo (1 mes)">Corto plazo (1 mes)</option>
+                      <option value="Mediano plazo (3 meses)">Mediano plazo (3 meses)</option>
+                      <option value="Largo plazo (6+ meses)">Largo plazo (6+ meses)</option>
                     </select>
                   </div>
                   <div>
@@ -439,28 +467,54 @@ export default function CustomConsultation() {
                       onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                     >
                       <option value="">Seleccionar rango</option>
-                      <option value="500-1000">$500 - $1,000</option>
-                      <option value="1000-2500">$1,000 - $2,500</option>
-                      <option value="2500-5000">$2,500 - $5,000</option>
-                      <option value="5000+">$5,000+</option>
-                      <option value="to-discuss">A discutir</option>
+                      <option value="500 € - 1.000 €">500 € - 1.000 €</option>
+                      <option value="1.000 € - 2.500 €">1.000 € - 2.500 €</option>
+                      <option value="2.500 € - 5.000 €">2.500 € - 5.000 €</option>
+                      <option value="Más de 5.000 €">Más de 5.000 €</option>
+                      <option value="A consultar">Aún no lo sé</option>
                     </select>
                   </div>
                 </div>
 
+                <ConsentFields
+                  consent={consent}
+                  onConsentChange={setConsent}
+                  website={website}
+                  onWebsiteChange={setWebsite}
+                />
+
                 <motion.button
                   type="submit"
-                  className="w-full btn-primary text-lg py-4"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  disabled={isSubmitting}
+                  className="w-full btn-primary text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 >
-                  🧠 Solicitar Consultoría Personalizada
+                  {isSubmitting ? "Enviando..." : "🧠 Solicitar Consultoría Personalizada"}
                 </motion.button>
 
-                <p className="text-center text-sm text-gray-400">
-                  Te contactaremos en 24 horas para agendar tu primera sesión de consultoría
-                </p>
+                {submitStatus === "success" && (
+                  <p role="status" className="text-center p-4 bg-green-400/20 border border-green-400/30 rounded-xl text-green-400 font-semibold">
+                    ✅ ¡Solicitud enviada! Te contactaremos en 24 horas para agendar tu primera sesión.
+                  </p>
+                )}
+                {submitStatus === "error" && (
+                  <p role="alert" className="text-center p-4 bg-red-400/20 border border-red-400/30 rounded-xl text-red-400 font-semibold">
+                    ❌ No se pudo enviar. Inténtalo de nuevo o escríbenos a{" "}
+                    <a href={`mailto:${contact.email}`} className="underline">
+                      {contact.email}
+                    </a>
+                    .
+                  </p>
+                )}
+
+                {submitStatus === "idle" && (
+                  <p className="text-center text-sm text-gray-400">
+                    Te contactaremos en 24 horas para agendar tu primera sesión de consultoría
+                  </p>
+                )}
               </form>
+              <PrivacyNotice />
             </div>
           </motion.div>
         </div>

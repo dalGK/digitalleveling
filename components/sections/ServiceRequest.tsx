@@ -5,6 +5,9 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { CheckCircle, Clock, Users, Zap, Shield, Code } from "lucide-react"
+import { contact } from "@/lib/site"
+import { submitContact } from "@/lib/submit-contact"
+import ConsentFields, { PrivacyNotice } from "@/components/forms/ConsentFields"
 
 interface ServiceRequestProps {
   serviceType: string
@@ -133,10 +136,40 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [consent, setConsent] = useState(false)
+  const [website, setWebsite] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+
+  const priorityLabels: Record<string, string> = {
+    standard: "Estándar",
+    priority: "Prioritario (+20%)",
+    express: "Express (+50%)",
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí iría la lógica de envío
-    console.log("Solicitud de servicio:", { serviceType, ...formData })
+    if (!service) return
+    setIsSubmitting(true)
+    const ok = await submitContact({
+      source: "Solicitud de servicio",
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      service: service.title,
+      budget: formData.budget,
+      message: formData.projectDescription,
+      details: {
+        Plazo: formData.timeline,
+        Prioridad: priorityLabels[formData.priority] ?? formData.priority,
+        "Funcionalidades adicionales": formData.features.join(", "),
+      },
+      consent,
+      website,
+    })
+    setSubmitStatus(ok ? "success" : "error")
+    setIsSubmitting(false)
   }
 
   if (!service) {
@@ -260,7 +293,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
             <div className="glass-effect rounded-3xl p-8">
               <h3 className="text-2xl font-bold mb-8 text-center">Solicitar {service.title}</h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6 relative">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -301,7 +334,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
                       type="tel"
                       id="phone"
                       className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-xl focus:border-yellow-400 focus:outline-none transition-colors text-white"
-                      placeholder="+34 614 47 31 97"
+                      placeholder="+34 600 000 000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
@@ -333,9 +366,9 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
                       onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
                     >
                       <option value="">Seleccionar plazo</option>
-                      <option value="urgent">Urgente (1-2 semanas)</option>
-                      <option value="normal">Normal (1 mes)</option>
-                      <option value="flexible">Flexible (2+ meses)</option>
+                      <option value="Urgente (1-2 semanas)">Urgente (1-2 semanas)</option>
+                      <option value="Normal (1 mes)">Normal (1 mes)</option>
+                      <option value="Flexible (2+ meses)">Flexible (2+ meses)</option>
                     </select>
                   </div>
                   <div>
@@ -349,11 +382,11 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
                       onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                     >
                       <option value="">Seleccionar rango</option>
-                      <option value="1000-2500">$1,000 - $2,500</option>
-                      <option value="2500-5000">$2,500 - $5,000</option>
-                      <option value="5000-10000">$5,000 - $10,000</option>
-                      <option value="10000+">$10,000+</option>
-                      <option value="to-discuss">A discutir</option>
+                      <option value="Menos de 1.000 €">Menos de 1.000 €</option>
+                      <option value="1.000 € - 2.500 €">1.000 € - 2.500 €</option>
+                      <option value="2.500 € - 5.000 €">2.500 € - 5.000 €</option>
+                      <option value="Más de 5.000 €">Más de 5.000 €</option>
+                      <option value="A consultar">Aún no lo sé</option>
                     </select>
                   </div>
                 </div>
@@ -426,19 +459,45 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
                   </div>
                 </div>
 
+                <ConsentFields
+                  consent={consent}
+                  onConsentChange={setConsent}
+                  website={website}
+                  onWebsiteChange={setWebsite}
+                />
+
                 <motion.button
                   type="submit"
-                  className="w-full btn-primary text-lg py-4"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  disabled={isSubmitting}
+                  className="w-full btn-primary text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 >
-                  🚀 Solicitar {service.title}
+                  {isSubmitting ? "Enviando..." : `🚀 Solicitar ${service.title}`}
                 </motion.button>
 
-                <p className="text-center text-sm text-gray-400">
-                  Te contactaremos en menos de 24 horas con una propuesta personalizada
-                </p>
+                {submitStatus === "success" && (
+                  <p role="status" className="text-center p-4 bg-green-400/20 border border-green-400/30 rounded-xl text-green-400 font-semibold">
+                    ✅ ¡Solicitud enviada! Te contactaremos en menos de 24 horas con una propuesta personalizada.
+                  </p>
+                )}
+                {submitStatus === "error" && (
+                  <p role="alert" className="text-center p-4 bg-red-400/20 border border-red-400/30 rounded-xl text-red-400 font-semibold">
+                    ❌ No se pudo enviar. Inténtalo de nuevo o escríbenos a{" "}
+                    <a href={`mailto:${contact.email}`} className="underline">
+                      {contact.email}
+                    </a>
+                    .
+                  </p>
+                )}
+
+                {submitStatus === "idle" && (
+                  <p className="text-center text-sm text-gray-400">
+                    Te contactaremos en menos de 24 horas con una propuesta personalizada
+                  </p>
+                )}
               </form>
+              <PrivacyNotice />
             </div>
           </motion.div>
         </div>

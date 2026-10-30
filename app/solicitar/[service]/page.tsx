@@ -1,29 +1,39 @@
+import { notFound } from "next/navigation"
 import ServiceRequest from "@/components/sections/ServiceRequest"
 
 interface ServiceRequestPageProps {
-  params: {
+  params: Promise<{
     service: string
-  }
+  }>
 }
 
-export function generateMetadata({ params }: ServiceRequestPageProps) {
-  const serviceNames = {
-    "web-development": "Desarrollo Web",
-    ecommerce: "E-commerce",
-    "web-app": "Aplicación Web",
-    marketing: "Marketing Digital",
-    consulting: "Consultoría Digital",
-    "social-media": "Gestión de Redes Sociales",
-  }
+const serviceNames = {
+  "web-development": "Desarrollo Web",
+  ecommerce: "E-commerce",
+  "web-app": "Aplicación Web",
+  marketing: "Marketing Digital",
+  consulting: "Consultoría Digital",
+  "social-media": "Gestión de Redes Sociales",
+}
 
-  const serviceName = serviceNames[params.service as keyof typeof serviceNames] || "Servicio"
+export function generateStaticParams() {
+  return Object.keys(serviceNames).map((service) => ({ service }))
+}
+
+export const dynamicParams = false
+
+export async function generateMetadata({ params }: ServiceRequestPageProps) {
+  const { service } = await params
+  const serviceName = serviceNames[service as keyof typeof serviceNames] || "Servicio"
 
   return {
-    title: `Solicitar ${serviceName} - Digital Leveling`,
+    title: `Solicitar ${serviceName}`,
     description: `Solicita nuestro servicio de ${serviceName}. Formulario personalizado con propuesta detallada.`,
   }
 }
 
-export default function ServiceRequestPage({ params }: ServiceRequestPageProps) {
-  return <ServiceRequest serviceType={params.service} />
+export default async function ServiceRequestPage({ params }: ServiceRequestPageProps) {
+  const { service } = await params
+  if (!(service in serviceNames)) notFound()
+  return <ServiceRequest serviceType={service} />
 }

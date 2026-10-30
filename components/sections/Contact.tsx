@@ -4,6 +4,9 @@ import type React from "react"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Mail, Phone, MessageSquare, MapPin } from "lucide-react"
+import { contact, whatsappUrl } from "@/lib/site"
+import { submitContact } from "@/lib/submit-contact"
+import ConsentFields, { PrivacyNotice } from "@/components/forms/ConsentFields"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -15,6 +18,9 @@ export default function Contact() {
     budget: "",
     message: "",
   })
+  const [consent, setConsent] = useState(false)
+  // Honeypot anti-spam: campo oculto que solo rellenan los bots
+  const [website, setWebsite] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
@@ -29,62 +35,50 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name:    formData.name,
-          email:   formData.email,
-          phone:   formData.phone,
-          company: formData.company,
-          service: formData.service,
-          budget:  formData.budget,
-          message: formData.message,
-        }),
-      })
-      const result = await response.json()
-      if (result.success) {
-        setSubmitStatus("success")
-        setFormData({ name: "", email: "", phone: "", company: "", service: "", budget: "", message: "" })
-      } else {
-        setSubmitStatus("error")
-      }
-    } catch {
+    const ok = await submitContact({
+      source: "Formulario de contacto",
+      ...formData,
+      consent,
+      website,
+    })
+    if (ok) {
+      setSubmitStatus("success")
+      setFormData({ name: "", email: "", phone: "", company: "", service: "", budget: "", message: "" })
+      setConsent(false)
+    } else {
       setSubmitStatus("error")
-    } finally {
-      setIsSubmitting(false)
     }
+    setIsSubmitting(false)
   }
 
   const contactMethods = [
     {
       icon: Mail,
       title: "Email",
-      value: "leveling.digi@gmail.com",
+      value: contact.email,
       description: "Respuesta en 24 horas",
-      action: "mailto:leveling.digi@gmail.com",
+      action: `mailto:${contact.email}`,
     },
     {
       icon: Phone,
       title: "Teléfono",
-      value: "+34 614 473 197",
-      description: "Lun - Vie, 9:00 - 18:00",
-      action: "tel:+34614473197",
+      value: contact.phoneDisplay,
+      description: contact.hours,
+      action: `tel:${contact.phoneE164}`,
     },
     {
       icon: MessageSquare,
       title: "WhatsApp",
-      value: "+34 614 473 197",
+      value: contact.phoneDisplay,
       description: "Respuesta inmediata",
-      action: "https://wa.me/+34614473197",
+      action: whatsappUrl(),
     },
     {
       icon: MapPin,
       title: "Ubicación",
-      value: "Madrid, España",
-      description: "General ricardos 28025",
-      action: "https://maps.google.com/?q=Madrid+España",
+      value: `${contact.city}, ${contact.country}`,
+      description: `${contact.street}, ${contact.postalCode}`,
+      action: `https://maps.google.com/?q=${encodeURIComponent(`${contact.street} ${contact.postalCode} ${contact.city}`)}`,
     },
   ]
 
@@ -145,7 +139,7 @@ export default function Contact() {
                     className="flex items-center space-x-6 p-6 glass-effect rounded-2xl card-hover group"
                   >
                     <div className="bg-yellow-400 p-4 rounded-xl group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent className="text-black w-6 h-6" />
+                      <IconComponent aria-hidden="true" className="text-black w-6 h-6" />
                     </div>
                     <div className="flex-1">
                       <h4 className="font-bold text-lg mb-1 group-hover:text-yellow-400 transition-colors">
@@ -195,7 +189,7 @@ export default function Contact() {
             <div className="glass-effect rounded-3xl p-8">
               <h3 className="text-2xl font-bold mb-8 text-center">Cuéntanos sobre tu proyecto</h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6 relative">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -242,7 +236,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-xl focus:border-yellow-400 focus:outline-none transition-colors text-white placeholder-gray-400"
-                      placeholder="+34 614 473 197"
+                      placeholder="+34 600 000 000"
                     />
                   </div>
 
@@ -275,12 +269,13 @@ export default function Contact() {
                       className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-xl focus:border-yellow-400 focus:outline-none transition-colors text-white"
                     >
                       <option value="">Seleccionar servicio</option>
-                      <option value="web-development">Desarrollo Web</option>
-                      <option value="ecommerce">E-commerce</option>
-                      <option value="web-app">Aplicación Web</option>
-                      <option value="marketing">Marketing Digital</option>
-                      <option value="consulting">Consultoría Digital</option>
-                      <option value="social-media">Gestión de Redes Sociales</option>
+                      <option value="Diseño y desarrollo web">Diseño y desarrollo web</option>
+                      <option value="SEO">SEO y posicionamiento</option>
+                      <option value="E-commerce">E-commerce</option>
+                      <option value="Aplicación web">Aplicación web a medida</option>
+                      <option value="Marketing digital">Marketing digital</option>
+                      <option value="Consultoría digital">Consultoría digital</option>
+                      <option value="Gestión de redes sociales">Gestión de redes sociales</option>
                     </select>
                   </div>
 
@@ -296,11 +291,11 @@ export default function Contact() {
                       className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-xl focus:border-yellow-400 focus:outline-none transition-colors text-white"
                     >
                       <option value="">Seleccionar rango</option>
-                      <option value="1000-2500">$1,000 - $2,500</option>
-                      <option value="2500-5000">$2,500 - $5,000</option>
-                      <option value="5000-10000">$5,000 - $10,000</option>
-                      <option value="10000+">$10,000+</option>
-                      <option value="to-discuss">A discutir</option>
+                      <option value="Menos de 1.000 €">Menos de 1.000 €</option>
+                      <option value="1.000 € - 2.500 €">1.000 € - 2.500 €</option>
+                      <option value="2.500 € - 5.000 €">2.500 € - 5.000 €</option>
+                      <option value="Más de 5.000 €">Más de 5.000 €</option>
+                      <option value="A consultar">Aún no lo sé</option>
                     </select>
                   </div>
                 </div>
@@ -321,6 +316,13 @@ export default function Contact() {
                   />
                 </div>
 
+                <ConsentFields
+                  consent={consent}
+                  onConsentChange={setConsent}
+                  website={website}
+                  onWebsiteChange={setWebsite}
+                />
+
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
@@ -335,6 +337,7 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
+                    role="status"
                     className="text-center p-4 bg-green-400/20 border border-green-400/30 rounded-xl"
                   >
                     <p className="text-green-400 font-semibold">
@@ -347,18 +350,21 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
+                    role="alert"
                     className="text-center p-4 bg-red-400/20 border border-red-400/30 rounded-xl"
                   >
                     <p className="text-red-400 font-semibold">
-                      ❌ Error al enviar el mensaje. Por favor, intenta nuevamente.
+                      ❌ Error al enviar el mensaje. Inténtalo de nuevo o escríbenos a{" "}
+                      <a href={`mailto:${contact.email}`} className="underline">
+                        {contact.email}
+                      </a>
+                      .
                     </p>
                   </motion.div>
                 )}
               </form>
 
-              <div className="mt-8 text-center text-sm text-gray-400">
-                <p>Al enviar este formulario, aceptas nuestros términos de servicio y política de privacidad.</p>
-              </div>
+              <PrivacyNotice />
             </div>
           </motion.div>
         </div>
