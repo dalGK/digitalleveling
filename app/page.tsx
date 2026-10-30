@@ -9,6 +9,7 @@ import Stats from "@/components/sections/Stats"
 import FAQ from "@/components/sections/FAQ"
 import Contact from "@/components/sections/Contact"
 import CTA from "@/components/sections/CTA"
+import FAQSchema from "@/components/seo/FAQSchema"
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       {/* <Portfolio />*/}
       {/* <Testimonials >*/}
       <FAQ />
+      <FAQSchema />
       <CTA />
       <Collaborator />
       <Contact />

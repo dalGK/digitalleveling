@@ -18,8 +18,8 @@ export default function ScheduleCall() {
     description: "",
   })
 
-  // Tu URL real de Calendly
-  const CALENDLY_URL = "https://cal.com/digitalleveling/30min"
+  // URL de reserva de llamadas (cal.com)
+  const BOOKING_URL = "https://cal.com/digitalleveling/30min"
 
   const callTypes = [
     {
@@ -51,13 +51,13 @@ export default function ScheduleCall() {
   ]
 
   const handleDirectBooking = () => {
-    // Abrir tu Calendly directamente
-    window.open(CALENDLY_URL, "_blank")
+    // Abrir la página de reservas directamente
+    window.open(BOOKING_URL, "_blank")
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Redirigir a Calendly con parámetros pre-llenados
+    // Redirigir a la página de reservas con parámetros pre-llenados
     const params = new URLSearchParams({
       name: formData.name,
       email: formData.email,
@@ -65,7 +65,7 @@ export default function ScheduleCall() {
       a2: formData.description, // Campo personalizado para descripción
     })
 
-    window.open(`${CALENDLY_URL}?${params.toString()}`, "_blank")
+    window.open(`${BOOKING_URL}?${params.toString()}`, "_blank")
   }
 
   return (
@@ -275,7 +275,7 @@ export default function ScheduleCall() {
                       type="tel"
                       id="phone"
                       className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-xl focus:border-yellow-400 focus:outline-none transition-colors text-white"
-                      placeholder="+34 614 47 31 97"
+                      placeholder="+34 600 000 000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />

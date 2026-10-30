@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 import Link from "next/link"
+import { CONSULTATION_URL } from "@/lib/site"
 
 const mainServices = [
   {
@@ -186,7 +187,7 @@ export default function Services() {
         >
           <p className="text-gray-400 mb-6">¿Tienes un proyecto diferente o necesitas algo a medida?</p>
           <a
-            href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+            href={CONSULTATION_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary text-base sm:text-lg block w-full sm:w-auto sm:inline-block"

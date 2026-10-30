@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { CONSULTATION_URL } from "@/lib/site"
 
 export default function About() {
   return (
@@ -84,7 +85,7 @@ export default function About() {
             >
               
               <a
-                href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+                href={CONSULTATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary"

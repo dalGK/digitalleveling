@@ -1,12 +1,13 @@
 import ProjectDetails from "@/components/sections/ProjectDetails"
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
-export function generateMetadata({ params }: ProjectPageProps) {
+export async function generateMetadata({ params }: ProjectPageProps) {
+  const { id } = await params
   const projectNames = {
     techstore: "TechStore Pro - E-commerce Tecnológico",
     financeapp: "FinanceApp Dashboard - Gestión Financiera",
@@ -16,14 +17,17 @@ export function generateMetadata({ params }: ProjectPageProps) {
     luxurybrand: "LuxuryBrand Store - E-commerce Premium",
   }
 
-  const projectName = projectNames[params.id as keyof typeof projectNames] || "Proyecto"
+  const projectName = projectNames[id as keyof typeof projectNames] || "Proyecto"
 
   return {
-    title: `${projectName} - Digital Leveling`,
+    title: projectName,
     description: `Caso de estudio detallado: ${projectName}. Descubre cómo desarrollamos este proyecto exitoso.`,
+    // Proyectos de ejemplo: no indexar hasta sustituirlos por casos reales
+    robots: { index: false, follow: true },
   }
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  return <ProjectDetails projectId={params.id as any} />
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { id } = await params
+  return <ProjectDetails projectId={id as any} />
 }

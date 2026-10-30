@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
+import { contact } from "@/lib/site"
 
 export default function Footer() {
   return (
@@ -65,24 +66,32 @@ export default function Footer() {
             <h4 className="text-xl font-bold mb-6 text-yellow-400">Contacto</h4>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
-                <Mail className="w-5 h-5 text-yellow-400 mt-1" />
+                <Mail aria-hidden="true" className="w-5 h-5 text-yellow-400 mt-1" />
                 <div>
-                  <p className="text-gray-300">leveling.digi@gmail.com</p>
-                  <p className="text-gray-500 text-sm">Respuesta en 24h</p>
+                  <a href={`mailto:${contact.email}`} className="text-gray-300 hover:text-yellow-400 transition-colors">
+                    {contact.email}
+                  </a>
+                  <p className="text-gray-400 text-sm">Respuesta en 24h</p>
                 </div>
               </li>
               <li className="flex items-start space-x-3">
-                <Phone className="w-5 h-5 text-yellow-400 mt-1" />
+                <Phone aria-hidden="true" className="w-5 h-5 text-yellow-400 mt-1" />
                 <div>
-                  <p className="text-gray-300">+34 614 47 31 97</p>
-                  <p className="text-gray-500 text-sm">Lun - Vie, 9:00 - 18:00</p>
+                  <a href={`tel:${contact.phoneE164}`} className="text-gray-300 hover:text-yellow-400 transition-colors">
+                    {contact.phoneDisplay}
+                  </a>
+                  <p className="text-gray-400 text-sm">{contact.hours}</p>
                 </div>
               </li>
               <li className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-yellow-400 mt-1" />
+                <MapPin aria-hidden="true" className="w-5 h-5 text-yellow-400 mt-1" />
                 <div>
-                  <p className="text-gray-300">Madrid, España</p>
-                  <p className="text-gray-500 text-sm">Madrid - CP 28025</p>
+                  <p className="text-gray-300">
+                    {contact.city}, {contact.country}
+                  </p>
+                  <p className="text-gray-400 text-sm">
+                    {contact.street}, {contact.postalCode}
+                  </p>
                 </div>
               </li>
             </ul>
@@ -117,12 +126,11 @@ export default function Footer() {
             <p className="text-gray-400 text-center md:text-left">
               © {new Date().getFullYear()} Digital Leveling. Todos los derechos reservados.
             </p>
-            <div className="flex flex-wrap justify-center md:justify-end space-x-6">
+            <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2">
               {[
+                { href: "/aviso-legal", label: "Aviso Legal" },
                 { href: "/privacidad", label: "Política de Privacidad" },
-                { href: "/terminos", label: "Términos de Servicio" },
                 { href: "/cookies", label: "Cookies" },
-                { href: "/sitemap.xml", label: "Sitemap" },
               ].map((link, index) => (
                 <Link
                   key={index}

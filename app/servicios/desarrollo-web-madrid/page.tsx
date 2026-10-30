@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import ServicePage from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
-  title: "Diseño y Desarrollo Web para Empresas en España | Digital Leveling",
+  title: "Diseño y Desarrollo Web para Empresas en España",
   description:
     "Diseño y desarrollo web profesional para empresas en España. Creamos páginas web con Next.js y React, optimizadas para SEO y conversión. Proyectos en toda España e internacionalmente. Desde 300€.",
   keywords: [

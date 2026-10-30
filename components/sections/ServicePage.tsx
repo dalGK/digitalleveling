@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { CONSULTATION_URL } from "@/lib/site"
 
 interface Feature {
   icon: string
@@ -60,7 +61,7 @@ export default function ServicePage({
             <p className="text-xl text-gray-300 leading-relaxed mb-10">{description}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+                href={CONSULTATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary text-lg"
@@ -68,7 +69,7 @@ export default function ServicePage({
                 🚀 {ctaText}
               </a>
               <a
-                href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+                href={CONSULTATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary text-lg"
@@ -185,7 +186,7 @@ export default function ServicePage({
               Cuéntanos tu proyecto y te respondemos en menos de 24 horas con una propuesta personalizada.
             </p>
             <a
-              href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+              href={CONSULTATION_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-lg"

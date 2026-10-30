@@ -8,14 +8,14 @@ export default function ScrollToTop() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
+      if (window.scrollY > 300) {
         setIsVisible(true)
       } else {
         setIsVisible(false)
       }
     }
 
-    window.addEventListener("scroll", toggleVisibility)
+    window.addEventListener("scroll", toggleVisibility, { passive: true })
     return () => window.removeEventListener("scroll", toggleVisibility)
   }, [])
 
@@ -33,10 +33,12 @@ export default function ScrollToTop() {
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
+          type="button"
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 bg-yellow-400 text-black p-4 rounded-full shadow-lg hover:bg-yellow-300 transition-colors duration-300 pulse-glow"
+          aria-label="Volver arriba"
+          className="fixed bottom-6 right-6 z-50 bg-yellow-400 text-black w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full shadow-lg hover:bg-yellow-300 transition-colors duration-300 pulse-glow"
         >
-          <span className="text-xl">↑</span>
+          <span className="text-xl" aria-hidden="true">↑</span>
         </motion.button>
       )}
     </AnimatePresence>

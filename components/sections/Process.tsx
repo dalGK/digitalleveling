@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { CONSULTATION_URL } from "@/lib/site"
 
 const steps = [
   {
@@ -158,7 +159,7 @@ export default function Process() {
               Agenda una consulta gratuita y descubre cómo podemos transformar tu idea en realidad
             </p>
             <a
-              href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+              href={CONSULTATION_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-base sm:text-lg block w-full sm:inline-block sm:w-auto text-center"

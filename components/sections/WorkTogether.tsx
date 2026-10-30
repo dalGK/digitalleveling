@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { Calendar, Clock, Users, Target, CheckCircle, ArrowRight } from "lucide-react"
+import { CONSULTATION_URL } from "@/lib/site"
 
 export default function WorkTogether() {
   const [selectedPlan, setSelectedPlan] = useState("standard")
@@ -233,7 +234,7 @@ export default function WorkTogether() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+                href={CONSULTATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary text-lg px-8 py-4"

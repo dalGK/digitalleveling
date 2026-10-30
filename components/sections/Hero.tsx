@@ -1,171 +1,119 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import { CONSULTATION_URL } from "@/lib/site"
 
-// Componente para las constelaciones conectadas
+// Constelación de nodos conectados, dibujada en canvas para no re-renderizar React en cada frame
 const ConstellationEffect = () => {
-  const [nodes, setNodes] = useState<Array<{ id: number; x: number; y: number; vx: number; vy: number }>>([])
-  const [connections, setConnections] = useState<Array<{ from: number; to: number; opacity: number }>>([])
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
-    // Establecer dimensiones solo en el cliente
-    const updateDimensions = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      })
+    const canvas = canvasRef.current
+    const ctx = canvas?.getContext("2d")
+    if (!canvas || !ctx) return
+
+    const maxDistance = 150
+    let width = 0
+    let height = 0
+    let frame = 0
+
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      width = canvas.clientWidth
+      height = canvas.clientHeight
+      canvas.width = width * dpr
+      canvas.height = height * dpr
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     }
+    resize()
 
-    updateDimensions()
-    window.addEventListener("resize", updateDimensions)
-
-    return () => window.removeEventListener("resize", updateDimensions)
-  }, [])
-
-  useEffect(() => {
-    // Solo crear nodos cuando tenemos las dimensiones
-    if (dimensions.width === 0 || dimensions.height === 0) return
-
-    // Crear nodos iniciales
-    const initialNodes = Array.from({ length: 12 }, (_, i) => ({
-      id: i,
-      x: Math.random() * dimensions.width,
-      y: Math.random() * dimensions.height,
+    const nodeCount = width < 768 ? 7 : 12
+    const nodes = Array.from({ length: nodeCount }, (_, i) => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
       vx: (Math.random() - 0.5) * 0.5,
       vy: (Math.random() - 0.5) * 0.5,
+      phase: i * 0.6,
     }))
-    setNodes(initialNodes)
 
-    const animateNodes = () => {
-      setNodes((prevNodes) =>
-        prevNodes.map((node) => {
-          const newX = node.x + node.vx
-          const newY = node.y + node.vy
-          let newVx = node.vx
-          let newVy = node.vy
+    const draw = (time: number) => {
+      ctx.clearRect(0, 0, width, height)
 
-          // Rebotar en los bordes
-          if (newX <= 0 || newX >= dimensions.width) newVx = -newVx
-          if (newY <= 0 || newY >= dimensions.height) newVy = -newVy
-
-          return {
-            ...node,
-            x: Math.max(0, Math.min(dimensions.width, newX)),
-            y: Math.max(0, Math.min(dimensions.height, newY)),
-            vx: newVx,
-            vy: newVy,
-          }
-        }),
-      )
-    }
-
-    const updateConnections = () => {
-      setNodes((currentNodes) => {
-        const newConnections: Array<{ from: number; to: number; opacity: number }> = []
-        const maxDistance = 150
-
-        for (let i = 0; i < currentNodes.length; i++) {
-          for (let j = i + 1; j < currentNodes.length; j++) {
-            const dx = currentNodes[i].x - currentNodes[j].x
-            const dy = currentNodes[i].y - currentNodes[j].y
-            const distance = Math.sqrt(dx * dx + dy * dy)
-
-            if (distance < maxDistance) {
-              const opacity = 1 - distance / maxDistance
-              newConnections.push({
-                from: i,
-                to: j,
-                opacity: opacity * 0.6,
-              })
-            }
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x
+          const dy = nodes[i].y - nodes[j].y
+          const distance = Math.sqrt(dx * dx + dy * dy)
+          if (distance < maxDistance) {
+            ctx.strokeStyle = `rgba(254, 199, 63, ${0.4 * (1 - distance / maxDistance) * 0.6})`
+            ctx.lineWidth = 1
+            ctx.beginPath()
+            ctx.moveTo(nodes[i].x, nodes[i].y)
+            ctx.lineTo(nodes[j].x, nodes[j].y)
+            ctx.stroke()
           }
         }
+      }
 
-        setConnections(newConnections)
-        return currentNodes
-      })
+      ctx.shadowColor = "rgba(254, 199, 63, 0.6)"
+      ctx.shadowBlur = 10
+      for (const node of nodes) {
+        const pulse = (Math.sin(time / 320 + node.phase) + 1) / 2
+        ctx.fillStyle = `rgba(254, 199, 63, ${0.6 + pulse * 0.4})`
+        ctx.beginPath()
+        ctx.arc(node.x, node.y, 4 * (1 + pulse * 0.2), 0, Math.PI * 2)
+        ctx.fill()
+      }
+      ctx.shadowBlur = 0
     }
 
-    const interval = setInterval(() => {
-      animateNodes()
-      updateConnections()
-    }, 50)
+    const step = (time: number) => {
+      for (const node of nodes) {
+        node.x += node.vx
+        node.y += node.vy
+        if (node.x <= 0 || node.x >= width) node.vx = -node.vx
+        if (node.y <= 0 || node.y >= height) node.vy = -node.vy
+        node.x = Math.max(0, Math.min(width, node.x))
+        node.y = Math.max(0, Math.min(height, node.y))
+      }
+      draw(time)
+      frame = requestAnimationFrame(step)
+    }
 
-    return () => clearInterval(interval)
-  }, [dimensions])
+    if (reduceMotion) {
+      draw(0)
+    } else {
+      frame = requestAnimationFrame(step)
+    }
 
-  // No renderizar nada hasta tener las dimensiones
-  if (dimensions.width === 0 || dimensions.height === 0) {
-    return null
-  }
+    window.addEventListener("resize", resize)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener("resize", resize)
+    }
+  }, [reduceMotion])
 
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <svg className="w-full h-full">
-        {/* Conexiones */}
-        {connections.map((connection, index) => {
-          const fromNode = nodes[connection.from]
-          const toNode = nodes[connection.to]
-          if (!fromNode || !toNode) return null
-
-          return (
-            <motion.line
-              key={`${connection.from}-${connection.to}-${index}`}
-              x1={fromNode.x}
-              y1={fromNode.y}
-              x2={toNode.x}
-              y2={toNode.y}
-              stroke="rgba(254, 199, 63, 0.4)"
-              strokeWidth="1"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: connection.opacity }}
-              transition={{ duration: 0.3 }}
-            />
-          )
-        })}
-      </svg>
-
-      {/* Nodos */}
-      {nodes.map((node) => (
-        <motion.div
-          key={node.id}
-          className="absolute w-2 h-2 bg-yellow-400 rounded-full"
-          style={{
-            left: node.x - 4,
-            top: node.y - 4,
-            boxShadow: "0 0 10px rgba(254, 199, 63, 0.6)",
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.6, 1, 0.6],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Number.POSITIVE_INFINITY,
-            delay: node.id * 0.2,
-          }}
-        />
-      ))}
-    </div>
-  )
+  return <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 w-full h-full pointer-events-none" />
 }
 
+const words = ["crece online", "posiciona en Google", "capta más clientes", "escala su negocio"]
+
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const glowRef = useRef<HTMLDivElement>(null)
+  const [currentWord, setCurrentWord] = useState(0)
 
   useEffect(() => {
+    // Actualiza el brillo vía CSS variables, sin pasar por el estado de React
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+      glowRef.current?.style.setProperty("--mx", `${e.clientX}px`)
+      glowRef.current?.style.setProperty("--my", `${e.clientY}px`)
     }
-    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("mousemove", handleMouseMove, { passive: true })
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
-
-  const words = ["crece online", "posiciona en Google", "capta más clientes", "escala su negocio"]
-  const [currentWord, setCurrentWord] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -174,17 +122,16 @@ export default function Hero() {
     return () => clearInterval(interval)
   }, [])
 
-  const handleCalendlyClick = () => {
-    window.open("https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita", "_blank")
-  }
-
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Interactive Background */}
-      <motion.div
-        className="absolute inset-0 opacity-20"
+      <div
+        ref={glowRef}
+        aria-hidden="true"
+        className="absolute inset-0 opacity-20 hidden md:block"
         style={{
-          background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(254, 199, 63, 0.15), transparent 80%)`,
+          background:
+            "radial-gradient(600px at var(--mx, 50%) var(--my, 50%), rgba(254, 199, 63, 0.15), transparent 80%)",
         }}
       />
 
@@ -192,90 +139,56 @@ export default function Hero() {
       <ConstellationEffect />
 
       <div className="container mx-auto px-4 text-center z-10 pt-20">
-        <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-6"
-          >
-            <span className="inline-block bg-yellow-400/20 text-yellow-400 px-6 py-2 rounded-full text-sm font-semibold border border-yellow-400/30">
-              Diseño Web · SEO · Aplicaciones a Medida
-            </span>
-          </motion.div>
-
-          <h1 className="text-5xl md:text-8xl font-bold mb-4 leading-tight">
-            <span className="gradient-text text-shadow">Diseño Web</span>
-            <br />
-            <span className="text-white">y SEO para</span>
-            <br />
-            <span className="gradient-text">Empresas</span>
-          </h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl text-yellow-400 font-semibold mb-4"
-          >
-            Tu negocio{" "}
-            <motion.span
-              key={currentWord}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4 }}
-              className="inline-block"
-            >
-              {words[currentWord]}
-            </motion.span>
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-          >
-            Creamos páginas web profesionales y estrategias SEO para negocios que quieren captar más clientes.
-            Trabajamos con empresas en España e internacionalmente.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
-          >
-            <button onClick={handleCalendlyClick} className="btn-primary text-lg">
-              Consulta Gratuita
-            </button>
-            <Link href="/#services" className="btn-secondary text-lg">
-              Ver Servicios
-            </Link>
-          </motion.div>
-
-          {/* Stats Preview */}
-          {/*
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="mb-6"
         >
-          {[
-            { number: "100+", label: "Proyectos" },
-            { number: "50+", label: "Clientes" },
-            { number: "5★", label: "Rating" },
-            { number: "24/7", label: "Soporte" },
-          ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">{stat.number}</div>
-              <div className="text-gray-400 text-sm">{stat.label}</div>
-            </div>
-          ))}
+          <span className="inline-block bg-yellow-400/20 text-yellow-400 px-6 py-2 rounded-full text-sm font-semibold border border-yellow-400/30">
+            Diseño Web · SEO · Aplicaciones a Medida
+          </span>
         </motion.div>
-        */}
+
+        {/* El h1 se renderiza visible desde el servidor para no retrasar el LCP */}
+        <h1 className="text-5xl md:text-8xl font-bold mb-4 leading-tight">
+          <span className="gradient-text text-shadow">Diseño Web</span>
+          <br />
+          <span className="text-white">y SEO para</span>
+          <br />
+          <span className="gradient-text">Empresas</span>
+        </h1>
+
+        <p className="text-lg md:text-xl text-yellow-400 font-semibold mb-4" aria-live="polite">
+          Tu negocio{" "}
+          <motion.span
+            key={currentWord}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="inline-block"
+          >
+            {words[currentWord]}
+          </motion.span>
+        </p>
+
+        <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
+          Creamos páginas web profesionales y estrategias SEO para negocios que quieren captar más clientes.
+          Trabajamos con empresas en España e internacionalmente.
+        </p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+        >
+          <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-lg">
+            Consulta Gratuita
+          </a>
+          <Link href="/#services" className="btn-secondary text-lg">
+            Ver Servicios
+          </Link>
         </motion.div>
 
         <motion.div
@@ -287,12 +200,14 @@ export default function Hero() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-            className="text-yellow-400 text-3xl cursor-pointer"
+            className="text-yellow-400 text-3xl"
           >
-            <Link href="/#about">↓</Link>
+            <Link href="/#about" aria-label="Ir a la sección Sobre nosotros">
+              ↓
+            </Link>
           </motion.div>
         </motion.div>
       </div>
-    </section >
+    </section>
   )
 }

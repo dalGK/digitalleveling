@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
+import { CONSULTATION_URL } from "@/lib/site"
 
 const categories = ["Todos", "E-commerce", "Corporativo", "Aplicaciones", "Landing Pages"]
 
@@ -237,7 +238,7 @@ export default function Portfolio() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/34614473197?text=Hola%2C%20me%20interesa%20una%20consulta%20gratuita"
+                href={CONSULTATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"

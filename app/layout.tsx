@@ -8,8 +8,9 @@ import BackgroundEffects from "@/components/ui/BackgroundEffects"
 import ScrollToTop from "@/components/ui/ScrollToTop"
 import SchemaOrg from "@/components/seo/SchemaOrg"
 import WhatsAppButton from "@/components/ui/WhatsAppButton"
+import MotionProvider from "@/components/MotionProvider"
 
-const montserrat = Montserrat({ subsets: ["latin"] })
+const montserrat = Montserrat({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://digitalleveling.com"),
@@ -61,9 +62,9 @@ export const metadata: Metadata = {
       "Agencia de diseño web y SEO para empresas en España. Páginas web profesionales optimizadas para Google. Proyectos en España e internacionalmente.",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/og-image.png",
+        width: 1731,
+        height: 909,
         alt: "Digital Leveling - Diseño Web y SEO para Empresas en España",
       },
     ],
@@ -75,7 +76,7 @@ export const metadata: Metadata = {
     title: "Diseño Web y SEO para Empresas en España | Digital Leveling",
     description:
       "Agencia de diseño web y SEO para empresas en España. Páginas web profesionales optimizadas para posicionar en Google.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   alternates: {
     canonical: "https://digitalleveling.com",
@@ -90,13 +91,15 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${montserrat.className} bg-black text-white`}>
-        <SchemaOrg />
-        <BackgroundEffects />
-        <Header />
-        {children}
-        <Footer />
-        <ScrollToTop />
-        <WhatsAppButton />
+        <MotionProvider>
+          <SchemaOrg />
+          <BackgroundEffects />
+          <Header />
+          {children}
+          <Footer />
+          <ScrollToTop />
+          <WhatsAppButton />
+        </MotionProvider>
       </body>
     </html>
   )
