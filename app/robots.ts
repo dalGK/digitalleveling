@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next"
+import { SITE_URL } from "@/lib/site"
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,10 +7,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/"],
+        // No bloquear /_next/: Google necesita el CSS y JS para renderizar la página
+        disallow: ["/api/"],
       },
     ],
-    sitemap: "https://digitalleveling.com/sitemap.xml",
-    host: "https://digitalleveling.com",
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   }
 }
