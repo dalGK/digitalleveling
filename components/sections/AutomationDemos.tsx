@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { features } from "@/lib/site"
 
 interface AutomationFlow {
   icon: string
@@ -38,6 +39,8 @@ const flows: AutomationFlow[] = [
   },
 ]
 
+const visibleFlows = flows.filter((flow) => features.showComingSoon || flow.status !== "comingSoon")
+
 export default function AutomationDemos() {
   return (
     <section id="automatizaciones" data-track="demos" className="section-padding bg-gray-900/30">
@@ -61,8 +64,10 @@ export default function AutomationDemos() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {flows.map((flow, index) => (
+        <div
+          className={`grid grid-cols-1 gap-8 ${visibleFlows.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2 max-w-4xl mx-auto"}`}
+        >
+          {visibleFlows.map((flow, index) => (
             <motion.article
               key={flow.title}
               initial={{ opacity: 0, y: 40 }}

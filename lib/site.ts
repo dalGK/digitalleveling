@@ -43,6 +43,21 @@ export const activeSocialLinks = socialLinks.filter((link) => link.enabled && li
 // Rangos de presupuesto de los formularios (el valor se envía tal cual a /api/contact)
 export const budgetRanges = ["Menos de 500 €", "500 – 1.500 €", "1.500 – 3.000 €", "Más de 3.000 €", "A valorar"]
 
+// Interruptores de contenido: ocultan sin borrar el código
+export const features = {
+  // Los precios "Desde X €" se muestran solo en las páginas de servicio, no en la home
+  showPricesOnHome: false,
+  // Servicios que aún no se ofrecen (Asistentes de IA, CRM, demos "Próximamente")
+  showComingSoon: false,
+}
+
+// SEO de la home: title, description y sus variantes para redes
+export const homeSeo = {
+  title: "Diseño Web en Madrid para Negocios | Digital Leveling",
+  description:
+    "Webs profesionales y sistemas de reservas para negocios en Madrid. Desarrollo a medida, SEO incluido y trato directo con quien programa tu web.",
+}
+
 export function whatsappUrl(message = "Hola, me gustaría solicitar un diagnóstico gratuito para mi negocio.") {
   return `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(message)}`
 }
@@ -113,6 +128,28 @@ export const serviceGroups: ServiceGroup[] = [
 export const availableServices = serviceGroups.flatMap((group) =>
   group.items.filter((item) => !item.comingSoon).map((item) => item.label),
 )
+
+export interface SectorSolution {
+  id: string
+  title: string
+  sectors: string[]
+  offer: string
+  ctaLabel: string
+  href: string
+}
+
+// Soluciones por sector (home)
+export const sectorSolutions: SectorSolution[] = [
+  {
+    id: "cita-previa",
+    title: "Webs para negocios con cita previa",
+    sectors: ["Barberías y peluquerías", "Clínicas estéticas", "Centros de belleza"],
+    offer: "Web + reservas online + recordatorios automáticos",
+    ctaLabel: "Ver solución",
+    // TODO: apuntar a "/soluciones/barberias-madrid" cuando exista la página
+    href: whatsappUrl("Hola, tengo un negocio con cita previa y me interesa una web con reservas"),
+  },
+]
 
 // Datos del titular para las páginas legales (LSSI / RGPD).
 // TODO: completar con los datos reales del titular antes de considerar las páginas legales definitivas.

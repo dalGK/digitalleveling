@@ -141,13 +141,12 @@ export default function Hero() {
 
         {/* El h1 se renderiza visible desde el servidor para no retrasar el LCP */}
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight max-w-5xl mx-auto text-balance">
-          <span className="text-white">Webs y automatizaciones que </span>
-          <span className="gradient-text text-shadow">convierten visitas en clientes</span>
+          <span className="text-white">Diseño web y sistemas de reservas </span>
+          <span className="gradient-text text-shadow">para negocios en Madrid</span>
         </h1>
 
         <p className="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
-          Diseñamos tu web, automatizamos WhatsApp y las reservas y te ayudamos a aparecer en Google. Tú te centras en
-          tus clientes; nosotros nos encargamos de la tecnología.
+          Webs rápidas que convierten visitas en clientes y citas. Programadas a medida, no montadas con plantillas.
         </p>
 
         <motion.div

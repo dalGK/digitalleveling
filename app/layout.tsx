@@ -10,13 +10,13 @@ import SchemaOrg from "@/components/seo/SchemaOrg"
 import WhatsAppButton from "@/components/ui/WhatsAppButton"
 import MotionProvider from "@/components/MotionProvider"
 import Analytics from "@/components/analytics/Analytics"
-import { OG_IMAGE, SITE_URL } from "@/lib/site"
+import { homeSeo, OG_IMAGE, SITE_URL } from "@/lib/site"
 
 const montserrat = Montserrat({ subsets: ["latin"], display: "swap" })
 
-const defaultTitle = "Diseño Web, SEO y Automatización en Madrid | Digital Leveling"
-const defaultDescription =
-  "Webs profesionales, SEO y automatización de WhatsApp y reservas para negocios en Madrid y toda España. Te ayudamos a conseguir más clientes y ahorrar tiempo. Diagnóstico gratuito."
+// Valores por defecto alineados con la home; cada página puede definir los suyos
+const defaultTitle = homeSeo.title
+const defaultDescription = homeSeo.description
 
 // El canonical se define en cada página: uno global aquí se heredaría en rutas sin canonical propio.
 export const metadata: Metadata = {

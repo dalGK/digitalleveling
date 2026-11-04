@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { serviceGroups } from "@/lib/site"
+import { features, serviceGroups } from "@/lib/site"
 
 const moreServices = [
   { href: "/servicios/consultoria-digital", label: "Consultoría digital" },
@@ -24,7 +24,7 @@ export default function Services() {
             🛠️ Soluciones
           </span>
           <h2 className="text-4xl md:text-6xl font-bold mb-8">
-            Todo lo que tu negocio necesita <span className="gradient-text">para crecer online</span>
+            Webs, reservas y automatizaciones <span className="gradient-text">para negocios en Madrid</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Tres áreas, un solo equipo. Empezamos por lo que más impacto tenga en tu negocio y lo ampliamos cuando
@@ -49,7 +49,9 @@ export default function Services() {
               <p className="text-gray-300 mb-6 leading-relaxed">{group.description}</p>
 
               <ul className="space-y-1 mt-auto">
-                {group.items.map((item) => (
+                {group.items
+                  .filter((item) => features.showComingSoon || !item.comingSoon)
+                  .map((item) => (
                   <li key={item.label}>
                     {item.href ? (
                       <Link
@@ -63,7 +65,7 @@ export default function Services() {
                           {item.label}
                         </span>
                         <span className="text-sm text-gray-400 group-hover:text-yellow-400 whitespace-nowrap">
-                          {item.price ?? "Ver más"} <span aria-hidden="true">→</span>
+                          {(features.showPricesOnHome && item.price) || "Ver más"} <span aria-hidden="true">→</span>
                         </span>
                       </Link>
                     ) : (
