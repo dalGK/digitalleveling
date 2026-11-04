@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Hero from "@/components/sections/Hero"
 import About from "@/components/sections/About"
+import Stats from "@/components/sections/Stats"
 import Services from "@/components/sections/Services"
 import AutomationDemos from "@/components/sections/AutomationDemos"
 import Collaborator from "@/components/sections/Collaborator"
@@ -15,11 +16,13 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
 }
 
-// Stats, Portfolio y Testimonials siguen fuera hasta tener cifras, proyectos y opiniones reales
+// Portfolio y Testimonials siguen fuera hasta tener proyectos y opiniones reales.
+// Stats muestra solo puntos verificables, sin cifras ni valoraciones.
 export default function Home() {
   return (
     <main className="min-h-screen bg-black overflow-x-hidden">
       <Hero />
+      <Stats />
       <Services />
       <AutomationDemos />
       <About />

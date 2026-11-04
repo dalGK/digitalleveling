@@ -61,9 +61,9 @@ export const faqs: FAQItem[] = [
     category: "Internacional",
   },
   {
-    question: "¿Qué pasa si algo no me convence del resultado?",
+    question: "¿Qué pasa si no estoy satisfecho con el resultado?",
     answer:
-      "Antes de publicar revisamos el trabajo contigo y hacemos los ajustes necesarios hasta que lo apruebes. El número de revisiones y el alcance quedan indicados por escrito en la propuesta.",
+      "Antes de empezar acordamos por escrito qué incluye el proyecto. Durante el diseño tienes rondas de revisión incluidas y no pasamos a desarrollo hasta que apruebes el diseño.",
     category: "Proceso",
   },
   {
