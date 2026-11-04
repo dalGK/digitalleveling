@@ -5,7 +5,7 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { Brain, Target, Lightbulb, TrendingUp, CheckCircle } from "lucide-react"
-import { contact } from "@/lib/site"
+import { budgetRanges, contact } from "@/lib/site"
 import { submitContact } from "@/lib/submit-contact"
 import ConsentFields, { PrivacyNotice } from "@/components/forms/ConsentFields"
 
@@ -467,11 +467,11 @@ export default function CustomConsultation() {
                       onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                     >
                       <option value="">Seleccionar rango</option>
-                      <option value="500 € - 1.000 €">500 € - 1.000 €</option>
-                      <option value="1.000 € - 2.500 €">1.000 € - 2.500 €</option>
-                      <option value="2.500 € - 5.000 €">2.500 € - 5.000 €</option>
-                      <option value="Más de 5.000 €">Más de 5.000 €</option>
-                      <option value="A consultar">Aún no lo sé</option>
+                      {budgetRanges.map((range) => (
+                        <option key={range} value={range}>
+                          {range}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>

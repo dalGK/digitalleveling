@@ -38,9 +38,9 @@ export default function Contact() {
     {
       icon: MapPin,
       title: "Ubicación",
-      value: `${contact.city}, ${contact.country}`,
-      description: `${contact.street}, ${contact.postalCode}`,
-      action: `https://maps.google.com/?q=${encodeURIComponent(`${contact.street} ${contact.postalCode} ${contact.city}`)}`,
+      value: contact.addressDisplay,
+      description: "Trabajamos en remoto con toda España",
+      action: `https://maps.google.com/?q=${encodeURIComponent(`${contact.postalCode} ${contact.city}`)}`,
     },
   ]
 

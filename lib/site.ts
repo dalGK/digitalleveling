@@ -14,12 +14,34 @@ export const contact = {
   phoneDisplay: "+34 614 473 197",
   phoneE164: "+34614473197",
   whatsappNumber: "34614473197",
-  street: "Calle General Ricardos",
+  // Única dirección pública de la web (sin calle). La del colaborador solo va en su bloque.
   postalCode: "28025",
   city: "Madrid",
   country: "España",
+  addressDisplay: "Madrid, España (28025)",
   hours: "Lun - Vie, 9:00 - 18:00",
 }
+
+export interface SocialLink {
+  id: "instagram" | "facebook" | "linkedin" | "twitter"
+  label: string
+  href: string
+  enabled: boolean
+}
+
+// Redes sociales: solo se muestran (footer) y se declaran (schema sameAs) las que tienen enabled: true
+export const socialLinks: SocialLink[] = [
+  { id: "instagram", label: "Instagram", href: "https://www.instagram.com/digitalleveling.tech/", enabled: true },
+  // Desactivadas: el titular confirmó el 05/11/2026 que estas cuentas no existen
+  { id: "facebook", label: "Facebook", href: "https://facebook.com/digitalleveling", enabled: false },
+  { id: "linkedin", label: "LinkedIn", href: "https://linkedin.com/company/digital-leveling", enabled: false },
+  { id: "twitter", label: "X (Twitter)", href: "", enabled: false },
+]
+
+export const activeSocialLinks = socialLinks.filter((link) => link.enabled && link.href)
+
+// Rangos de presupuesto de los formularios (el valor se envía tal cual a /api/contact)
+export const budgetRanges = ["Menos de 500 €", "500 – 1.500 €", "1.500 – 3.000 €", "Más de 3.000 €", "A valorar"]
 
 export function whatsappUrl(message = "Hola, me gustaría solicitar un diagnóstico gratuito para mi negocio.") {
   return `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(message)}`
@@ -97,7 +119,8 @@ export const availableServices = serviceGroups.flatMap((group) =>
 export const legal = {
   owner: "[Nombre y apellidos o razón social del titular]",
   taxId: "[NIF/CIF]",
-  address: `${contact.street}, ${contact.postalCode} ${contact.city}, ${contact.country}`,
+  // TODO: la LSSI exige el domicilio completo del titular; completarlo junto con el nombre y el NIF
+  address: contact.addressDisplay,
   email: contact.email,
   lastUpdated: "15 de octubre de 2026",
 }

@@ -4,6 +4,7 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { Calendar, Clock, Video, Phone, MessageSquare, CheckCircle, ExternalLink } from "lucide-react"
+import { contact } from "@/lib/site"
 
 export default function ScheduleCall() {
   const [selectedType, setSelectedType] = useState("video")
@@ -333,7 +334,7 @@ export default function ScheduleCall() {
                     WhatsApp Directo
                   </a>
                   <a
-                    href="mailto:leveling.digi@gmail.com?subject=Consulta%20Gratuita&body=Hola!%20Me%20gustaría%20agendar%20una%20consulta%20gratuita%20para%20discutir%20mi%20proyecto%20digital."
+                    href={`mailto:${contact.email}?subject=Consulta%20Gratuita&body=Hola!%20Me%20gustaría%20agendar%20una%20consulta%20gratuita%20para%20discutir%20mi%20proyecto%20digital.`}
                     className="btn-ghost text-sm flex items-center justify-center"
                   >
                     📧 Email Directo

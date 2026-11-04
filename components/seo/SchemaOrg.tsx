@@ -1,4 +1,6 @@
-import { contact } from "@/lib/site"
+import { activeSocialLinks, contact } from "@/lib/site"
+
+// Sin AggregateRating ni Review: no se publican valoraciones sin reseñas reales verificables
 
 export default function SchemaOrg() {
   const organizationSchema = {
@@ -15,7 +17,6 @@ export default function SchemaOrg() {
     },
     description:
       "Agencia de diseño web, SEO y automatización para negocios en Madrid y toda España. Páginas web profesionales, posicionamiento en Google y automatización de WhatsApp y reservas.",
-    foundingDate: "2020",
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -23,19 +24,14 @@ export default function SchemaOrg() {
         contactType: "customer service",
         email: contact.email,
         availableLanguage: ["Spanish", "English"],
-        areaServed: ["ES", "GB", "US", "FR", "DE", "IT", "MX", "AR", "CO"],
+        areaServed: "ES",
       },
     ],
-    sameAs: [
-      "https://facebook.com/digitalleveling",
-      "https://linkedin.com/company/digital-leveling",
-      "https://instagram.com/digitalleveling",
-    ],
+    sameAs: activeSocialLinks.map((link) => link.href),
     address: {
       "@type": "PostalAddress",
-      streetAddress: contact.street,
-      addressLocality: "Madrid",
-      postalCode: "28025",
+      addressLocality: contact.city,
+      postalCode: contact.postalCode,
       addressCountry: "ES",
     },
   }
@@ -56,16 +52,10 @@ export default function SchemaOrg() {
       "Agencia de diseño web, SEO y automatización en Madrid. Páginas web profesionales, posicionamiento en Google y automatización de WhatsApp y reservas para negocios.",
     address: {
       "@type": "PostalAddress",
-      streetAddress: contact.street,
-      addressLocality: "Madrid",
+      addressLocality: contact.city,
       addressRegion: "Comunidad de Madrid",
-      postalCode: "28025",
+      postalCode: contact.postalCode,
       addressCountry: "ES",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 40.3953,
-      longitude: -3.7176,
     },
     openingHoursSpecification: [
       {
@@ -75,28 +65,10 @@ export default function SchemaOrg() {
         closes: "18:00",
       },
     ],
-    hasMap: "https://maps.google.com/?q=General+Ricardos+Madrid+28025",
+    hasMap: `https://maps.google.com/?q=${encodeURIComponent(`${contact.postalCode} ${contact.city}`)}`,
     areaServed: [
-      {
-        "@type": "Country",
-        name: "España",
-      },
-      {
-        "@type": "Country",
-        name: "United Kingdom",
-      },
-      {
-        "@type": "Country",
-        name: "United States",
-      },
-      {
-        "@type": "Country",
-        name: "France",
-      },
-      {
-        "@type": "Country",
-        name: "Mexico",
-      },
+      { "@type": "City", name: "Madrid" },
+      { "@type": "Country", name: "España" },
     ],
     serviceType: [
       "Diseño Web",

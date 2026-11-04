@@ -1,6 +1,8 @@
 import Link from "next/link"
-import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
-import { contact } from "@/lib/site"
+import { Facebook, Linkedin, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react"
+import { activeSocialLinks, contact } from "@/lib/site"
+
+const socialIcons = { instagram: Instagram, facebook: Facebook, linkedin: Linkedin, twitter: Twitter }
 import CookieSettingsButton from "@/components/analytics/CookieSettingsButton"
 
 export default function Footer() {
@@ -16,15 +18,11 @@ export default function Footer() {
               Madrid para toda España.
             </p>
             <div className="flex space-x-4">
-              {[
-                { icon: Facebook, href: "https://facebook.com/digitalleveling", label: "Facebook" },
-                { icon: Linkedin, href: "https://linkedin.com/company/digital-leveling", label: "LinkedIn" },
-                { icon: Instagram, href: "https://instagram.com/digitalleveling", label: "Instagram" },
-              ].map((social, index) => {
-                const IconComponent = social.icon
+              {activeSocialLinks.map((social) => {
+                const IconComponent = socialIcons[social.id]
                 return (
                   <Link
-                    key={index}
+                    key={social.id}
                     href={social.href}
                     className="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-yellow-400 hover:text-black transition-all duration-300 transform hover:scale-110 group"
                     aria-label={social.label}
@@ -89,12 +87,7 @@ export default function Footer() {
               <li className="flex items-start space-x-3">
                 <MapPin aria-hidden="true" className="w-5 h-5 text-yellow-400 mt-1" />
                 <div>
-                  <p className="text-gray-300">
-                    {contact.city}, {contact.country}
-                  </p>
-                  <p className="text-gray-400 text-sm">
-                    {contact.street}, {contact.postalCode}
-                  </p>
+                  <p className="text-gray-300">{contact.addressDisplay}</p>
                 </div>
               </li>
             </ul>
