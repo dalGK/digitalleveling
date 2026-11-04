@@ -6,7 +6,7 @@ import { CONSULTATION_URL } from "@/lib/site"
 
 export default function CTA() {
   return (
-    <section className="section-padding bg-gradient-to-br from-yellow-400/10 via-black to-blue-400/10 relative overflow-hidden">
+    <section data-track="cta" className="section-padding bg-gradient-to-br from-yellow-400/10 via-black to-blue-400/10 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <motion.div
@@ -62,10 +62,8 @@ export default function CTA() {
             viewport={{ once: true }}
             className="text-5xl md:text-7xl font-bold mb-8 leading-tight"
           >
-            ¿Tu negocio necesita{" "}
-            <span className="gradient-text text-shadow">una web</span>
-            <br />
-            que posicione y venda?
+            ¿Hablamos de{" "}
+            <span className="gradient-text text-shadow">tu negocio</span>?
           </motion.h2>
 
           <motion.p
@@ -96,7 +94,7 @@ export default function CTA() {
                 rel="noopener noreferrer"
                 className="btn-secondary text-xl px-12 py-5"
               >
-                📞 Consulta Gratis
+                Hablar por WhatsApp
               </a>
             </motion.div>
           </motion.div>
@@ -113,7 +111,7 @@ export default function CTA() {
               {
                 icon: "⚡",
                 title: "Respuesta en 24h",
-                description: "Te respondemos antes de 24 horas con una propuesta real",
+                description: "Te respondemos en menos de 24 horas laborables",
               },
               {
                 icon: "🎯",

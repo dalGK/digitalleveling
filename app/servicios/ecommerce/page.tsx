@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/site"
 import ServicePage from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     description:
       "Tiendas online profesionales con carrito, pagos seguros y gestión de inventario. Empieza a vender por internet desde 1.000€.",
     url: "https://digitalleveling.com/servicios/ecommerce",
+    images: [OG_IMAGE],
   },
 }
 
@@ -115,6 +117,8 @@ const faqs = [
 export default function EcommercePage() {
   return (
     <ServicePage
+      path="/servicios/ecommerce"
+      serviceName="Tiendas online"
       badge="🛒 E-commerce Madrid"
       title="Tienda Online Profesional"
       titleHighlight="en Madrid"

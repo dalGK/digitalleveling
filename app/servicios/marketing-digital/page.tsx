@@ -1,15 +1,15 @@
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/site"
 import ServicePage from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
-  title: "Marketing Digital en Madrid | Google Ads, Facebook Ads y SEO",
+  title: "Marketing Digital en Madrid | Google Ads, SEO y Email Marketing",
   description:
-    "Agencia de marketing digital en Madrid. Google Ads, Facebook Ads, email marketing y SEO para aumentar ventas online. Gestión de campañas para empresas en España y Latinoamérica. Desde 300€/mes.",
+    "Agencia de marketing digital en Madrid. Campañas de Google Ads, email marketing y SEO para conseguir más contactos y ventas. Para empresas en España y Latinoamérica. Desde 300€/mes.",
   keywords: [
     "marketing digital madrid",
     "agencia marketing digital madrid",
     "google ads madrid",
-    "facebook ads madrid",
     "publicidad online madrid",
     "sem madrid",
     "agencia publicidad digital madrid",
@@ -21,10 +21,11 @@ export const metadata: Metadata = {
     canonical: "https://digitalleveling.com/servicios/marketing-digital",
   },
   openGraph: {
-    title: "Marketing Digital en Madrid | Google Ads y Facebook Ads | Digital Leveling",
+    title: "Marketing Digital en Madrid | Google Ads y SEO | Digital Leveling",
     description:
-      "Agencia de marketing digital en Madrid. Google Ads, Facebook Ads, email marketing y SEO para aumentar tus ventas online.",
+      "Agencia de marketing digital en Madrid. Google Ads, email marketing y SEO para aumentar tus ventas online.",
     url: "https://digitalleveling.com/servicios/marketing-digital",
+    images: [OG_IMAGE],
   },
 }
 
@@ -34,12 +35,6 @@ const features = [
     title: "Google Ads (SEM)",
     description:
       "Campañas de búsqueda, display, shopping y YouTube Ads. Gestión orientada a ROI máximo con optimización continua.",
-  },
-  {
-    icon: "📘",
-    title: "Facebook e Instagram Ads",
-    description:
-      "Campañas de captación y retargeting en Meta. Segmentación avanzada para llegar a tu cliente ideal en España y Latinoamérica.",
   },
   {
     icon: "📧",
@@ -63,7 +58,7 @@ const features = [
     icon: "🔁",
     title: "Retargeting",
     description:
-      "Impacta a usuarios que ya visitaron tu web. Campañas de remarketing en Google y Meta para recuperar clientes potenciales.",
+      "Impacta a usuarios que ya visitaron tu web. Campañas de remarketing en Google para recuperar clientes potenciales.",
   },
   {
     icon: "🌐",
@@ -94,7 +89,7 @@ const faqs = [
   {
     question: "¿Cuándo veré resultados con el marketing digital?",
     answer:
-      "Google Ads y Facebook Ads pueden generar leads desde la primera semana. El SEO requiere 3-6 meses para ver resultados significativos. El email marketing funciona desde el primer envío con una lista existente.",
+      "Google Ads puede generar contactos desde las primeras semanas de campaña. El SEO requiere 3-6 meses para ver resultados significativos. El email marketing funciona desde el primer envío con una lista existente.",
   },
   {
     question: "¿Trabajan con negocios de Latinoamérica?",
@@ -116,11 +111,13 @@ const faqs = [
 export default function MarketingDigitalPage() {
   return (
     <ServicePage
+      path="/servicios/marketing-digital"
+      serviceName="Marketing digital"
       badge="📈 Marketing Digital Madrid"
       title="Marketing Digital"
       titleHighlight="en Madrid"
-      subtitle="Google Ads · Facebook Ads · SEO · Email Marketing"
-      description="Aumentamos tus ventas con estrategias de marketing digital basadas en datos. Campañas de Google Ads, Meta Ads y SEO para empresas en Madrid, España y toda Latinoamérica."
+      subtitle="Google Ads · SEO · Email Marketing · Landing Pages"
+      description="Aumentamos tus ventas con estrategias de marketing digital basadas en datos. Campañas de Google Ads, email marketing y SEO para empresas en Madrid, España y toda Latinoamérica."
       features={features}
       faqs={faqs}
       price="Desde 300€/mes · Sin permanencia · Resultados medibles"

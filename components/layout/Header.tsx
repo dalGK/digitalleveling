@@ -4,13 +4,12 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { CONSULTATION_URL } from "@/lib/site"
 
 const menuItems = [
-  { href: "/", label: "Inicio" },
-  { href: "/servicios/desarrollo-web-madrid", label: "Desarrollo Web" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/servicios/desarrollo-web-madrid", label: "Diseño Web" },
+  { href: "/servicios/automatizacion", label: "Automatización" },
   { href: "/servicios/seo", label: "SEO" },
-  { href: "/servicios/aplicaciones-web", label: "Aplicaciones" },
   { href: "/#contact", label: "Contacto" },
 ]
 
@@ -40,6 +39,7 @@ export default function Header() {
 
   return (
     <header
+      data-track="header"
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled || isMenuOpen ? "bg-black/90 backdrop-blur-md border-b border-gray-800" : "bg-transparent"
       }`}
@@ -50,7 +50,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-6 lg:space-x-8">
           {menuItems.map((item) => (
             <Link
               key={item.href}
@@ -63,12 +63,9 @@ export default function Header() {
           ))}
         </div>
 
-        <div className="hidden md:flex space-x-4">
-          <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost">
-            Consulta Gratis
-          </a>
-          <Link href="/servicios" className="btn-primary">
-            Ver Servicios
+        <div className="hidden md:block">
+          <Link href="/#contact" data-cta="diagnostico" className="btn-primary !px-5 !py-2.5 text-sm lg:text-base">
+            Solicitar diagnóstico
           </Link>
         </div>
 
@@ -106,18 +103,14 @@ export default function Header() {
                     {item.label}
                   </Link>
                 ))}
-                <div className="flex flex-col space-y-2 pt-4">
-                  <a
-                    href={CONSULTATION_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-ghost text-center"
+                <div className="pt-4">
+                  <Link
+                    href="/#contact"
+                    data-cta="diagnostico"
+                    className="btn-primary text-center block"
                     onClick={closeMenu}
                   >
-                    Consulta Gratis
-                  </a>
-                  <Link href="/servicios" className="btn-primary text-center" onClick={closeMenu}>
-                    Ver Servicios
+                    Solicitar diagnóstico gratuito
                   </Link>
                 </div>
               </div>

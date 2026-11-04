@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/site"
 import ScheduleCall from "@/components/sections/ScheduleCall"
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
     title: "Agendar Llamada Gratuita | Digital Leveling",
     description: "Reserva tu consulta gratuita con la agencia de desarrollo web Digital Leveling. Madrid.",
     url: "https://digitalleveling.com/agendar-llamada",
+    images: [OG_IMAGE],
   },
 }
 

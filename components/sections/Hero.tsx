@@ -2,8 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion"
 import Link from "next/link"
-import { useState, useEffect, useRef } from "react"
-import { CONSULTATION_URL } from "@/lib/site"
+import { useEffect, useRef } from "react"
 
 // Constelación de nodos conectados, dibujada en canvas para no re-renderizar React en cada frame
 const ConstellationEffect = () => {
@@ -99,11 +98,8 @@ const ConstellationEffect = () => {
   return <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 w-full h-full pointer-events-none" />
 }
 
-const words = ["crece online", "posiciona en Google", "capta más clientes", "escala su negocio"]
-
 export default function Hero() {
   const glowRef = useRef<HTMLDivElement>(null)
-  const [currentWord, setCurrentWord] = useState(0)
 
   useEffect(() => {
     // Actualiza el brillo vía CSS variables, sin pasar por el estado de React
@@ -115,15 +111,8 @@ export default function Hero() {
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWord((prev) => (prev + 1) % words.length)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" data-track="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Interactive Background */}
       <div
         ref={glowRef}
@@ -146,50 +135,36 @@ export default function Hero() {
           className="mb-6"
         >
           <span className="inline-block bg-yellow-400/20 text-yellow-400 px-6 py-2 rounded-full text-sm font-semibold border border-yellow-400/30">
-            Diseño Web · SEO · Aplicaciones a Medida
+            Diseño web · Automatización · SEO
           </span>
         </motion.div>
 
         {/* El h1 se renderiza visible desde el servidor para no retrasar el LCP */}
-        <h1 className="text-5xl md:text-8xl font-bold mb-4 leading-tight">
-          <span className="gradient-text text-shadow">Diseño Web</span>
-          <br />
-          <span className="text-white">y SEO para</span>
-          <br />
-          <span className="gradient-text">Empresas</span>
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight max-w-5xl mx-auto text-balance">
+          <span className="text-white">Webs y automatizaciones que </span>
+          <span className="gradient-text text-shadow">convierten visitas en clientes</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-yellow-400 font-semibold mb-4" aria-live="polite">
-          Tu negocio{" "}
-          <motion.span
-            key={currentWord}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="inline-block"
-          >
-            {words[currentWord]}
-          </motion.span>
-        </p>
-
-        <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-          Creamos páginas web profesionales y estrategias SEO para negocios que quieren captar más clientes.
-          Trabajamos con empresas en España e internacionalmente.
+        <p className="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+          Diseñamos tu web, automatizamos WhatsApp y las reservas y te ayudamos a aparecer en Google. Tú te centras en
+          tus clientes; nosotros nos encargamos de la tecnología.
         </p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-stretch sm:items-center mb-6 max-w-sm sm:max-w-none mx-auto"
         >
-          <a href={CONSULTATION_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-lg">
-            Consulta Gratuita
-          </a>
-          <Link href="/#services" className="btn-secondary text-lg">
-            Ver Servicios
+          <Link href="/#contact" data-cta="diagnostico" className="btn-primary text-lg text-center">
+            Solicitar diagnóstico gratuito
+          </Link>
+          <Link href="/#services" className="btn-secondary text-lg text-center">
+            Explorar soluciones
           </Link>
         </motion.div>
+
+        <p className="text-sm text-gray-400 mb-16">Sin compromiso · Respuesta en 24 h laborables · Madrid y toda España</p>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -202,7 +177,7 @@ export default function Hero() {
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
             className="text-yellow-400 text-3xl"
           >
-            <Link href="/#about" aria-label="Ir a la sección Sobre nosotros">
+            <Link href="/#services" aria-label="Ir a la sección de soluciones">
               ↓
             </Link>
           </motion.div>

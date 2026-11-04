@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/site"
 import CustomConsultation from "@/components/sections/CustomConsultation"
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     description:
       "Consultoría digital personalizada: auditoría web, estrategia SEO y plan de marketing para tu negocio en España y Latinoamérica.",
     url: "https://digitalleveling.com/consulta-personalizada",
+    images: [OG_IMAGE],
   },
 }
 

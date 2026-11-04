@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { CONSULTATION_URL } from "@/lib/site"
 
 const steps = [
   {
@@ -31,7 +30,7 @@ const steps = [
     title: "Desarrollo",
     description: "Construimos tu proyecto con código limpio y las mejores prácticas.",
     icon: "⚡",
-    duration: "2 semana",
+    duration: "2 semanas",
   },
   {
     number: "05",
@@ -76,7 +75,7 @@ export default function Process() {
             Cómo <span className="gradient-text">Trabajamos</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Un proceso probado y eficiente que garantiza resultados excepcionales en cada proyecto
+            Un proceso claro, con plazos orientativos y revisiones contigo en cada fase. Los plazos finales dependen de cada proyecto
           </p>
         </motion.div>
 
@@ -156,16 +155,15 @@ export default function Process() {
           <div className="glass-effect rounded-2xl p-5 sm:p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">¿Listo para comenzar?</h3>
             <p className="text-gray-300 mb-6">
-              Agenda una consulta gratuita y descubre cómo podemos transformar tu idea en realidad
+              El primer paso es un diagnóstico gratuito: vemos tu caso y te decimos qué haríamos y cuánto costaría.
             </p>
-            <a
-              href={CONSULTATION_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/#contact"
+              data-cta="diagnostico"
               className="btn-primary text-base sm:text-lg block w-full sm:inline-block sm:w-auto text-center"
             >
-              💬 Consulta Gratuita por WhatsApp
-            </a>
+              Solicitar diagnóstico gratuito
+            </Link>
           </div>
         </motion.div>
       </div>

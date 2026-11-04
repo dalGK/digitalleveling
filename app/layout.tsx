@@ -9,36 +9,24 @@ import ScrollToTop from "@/components/ui/ScrollToTop"
 import SchemaOrg from "@/components/seo/SchemaOrg"
 import WhatsAppButton from "@/components/ui/WhatsAppButton"
 import MotionProvider from "@/components/MotionProvider"
+import Analytics from "@/components/analytics/Analytics"
+import { OG_IMAGE, SITE_URL } from "@/lib/site"
 
 const montserrat = Montserrat({ subsets: ["latin"], display: "swap" })
 
+const defaultTitle = "Diseño Web, SEO y Automatización en Madrid | Digital Leveling"
+const defaultDescription =
+  "Webs profesionales, SEO y automatización de WhatsApp y reservas para negocios en Madrid y toda España. Te ayudamos a conseguir más clientes y ahorrar tiempo. Diagnóstico gratuito."
+
+// El canonical se define en cada página: uno global aquí se heredaría en rutas sin canonical propio.
 export const metadata: Metadata = {
-  metadataBase: new URL("https://digitalleveling.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Diseño Web y SEO para Empresas en España | Digital Leveling",
+    default: defaultTitle,
     template: "%s | Digital Leveling",
   },
-  description:
-    "Agencia de diseño web y SEO para empresas en España. Creamos páginas web profesionales optimizadas para posicionar en Google y captar clientes. Trabajamos con negocios en España e internacionalmente.",
-  keywords: [
-    "diseño web españa",
-    "desarrollo web españa",
-    "seo españa",
-    "agencia seo españa",
-    "páginas web para empresas",
-    "desarrollo web para negocios",
-    "seo para empresas",
-    "diseño web profesional",
-    "agencia web españa",
-    "posicionamiento web españa",
-    "crear pagina web empresa",
-    "diseño web madrid",
-    "desarrollo web madrid",
-    "agencia digital españa",
-    "aplicaciones web a medida",
-    "digital leveling",
-  ],
-  authors: [{ name: "Digital Leveling", url: "https://digitalleveling.com" }],
+  description: defaultDescription,
+  authors: [{ name: "Digital Leveling", url: SITE_URL }],
   creator: "Digital Leveling",
   publisher: "Digital Leveling",
   robots: {
@@ -55,31 +43,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: "https://digitalleveling.com",
+    url: SITE_URL,
     siteName: "Digital Leveling",
-    title: "Diseño Web y SEO para Empresas en España | Digital Leveling",
-    description:
-      "Agencia de diseño web y SEO para empresas en España. Páginas web profesionales optimizadas para Google. Proyectos en España e internacionalmente.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1731,
-        height: 909,
-        alt: "Digital Leveling - Diseño Web y SEO para Empresas en España",
-      },
-    ],
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [OG_IMAGE],
   },
+  // Sin título propio: X/Twitter usa og:title y og:description de cada página
   twitter: {
     card: "summary_large_image",
-    site: "@digitalleveling",
-    creator: "@digitalleveling",
-    title: "Diseño Web y SEO para Empresas en España | Digital Leveling",
-    description:
-      "Agencia de diseño web y SEO para empresas en España. Páginas web profesionales optimizadas para posicionar en Google.",
-    images: ["/og-image.png"],
-  },
-  alternates: {
-    canonical: "https://digitalleveling.com",
   },
 }
 
@@ -99,6 +71,7 @@ export default function RootLayout({
           <Footer />
           <ScrollToTop />
           <WhatsAppButton />
+          <Analytics />
         </MotionProvider>
       </body>
     </html>

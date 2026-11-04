@@ -1,17 +1,19 @@
 import Link from "next/link"
 import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
 import { contact } from "@/lib/site"
+import CookieSettingsButton from "@/components/analytics/CookieSettingsButton"
 
 export default function Footer() {
   return (
-    <footer className="bg-black border-t border-gray-800">
+    <footer data-track="footer" className="bg-black border-t border-gray-800">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <h3 className="text-3xl font-bold gradient-text mb-6">Digital Leveling</h3>
             <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
-              Diseño web y SEO para negocios que quieren crecer online. Trabajamos con empresas en España e internacionalmente.
+              Webs, SEO y automatizaciones para negocios que quieren conseguir más clientes y ahorrar tiempo. Desde
+              Madrid para toda España.
             </p>
             <div className="flex space-x-4">
               {[
@@ -42,6 +44,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { href: "/servicios/desarrollo-web-madrid", label: "Diseño y Desarrollo Web" },
+                { href: "/servicios/automatizacion", label: "Automatización de WhatsApp y Reservas" },
                 { href: "/servicios/seo", label: "SEO y Posicionamiento Web" },
                 { href: "/servicios/aplicaciones-web", label: "Aplicaciones Web a Medida" },
                 { href: "/servicios/ecommerce", label: "E-commerce" },
@@ -71,7 +74,7 @@ export default function Footer() {
                   <a href={`mailto:${contact.email}`} className="text-gray-300 hover:text-yellow-400 transition-colors">
                     {contact.email}
                   </a>
-                  <p className="text-gray-400 text-sm">Respuesta en 24h</p>
+                  <p className="text-gray-400 text-sm">Respuesta en 24 h laborables</p>
                 </div>
               </li>
               <li className="flex items-start space-x-3">
@@ -126,6 +129,7 @@ export default function Footer() {
             <p className="text-gray-400 text-center md:text-left">
               © {new Date().getFullYear()} Digital Leveling. Todos los derechos reservados.
             </p>
+            <CookieSettingsButton />
           </div>
         </div>
       </div>

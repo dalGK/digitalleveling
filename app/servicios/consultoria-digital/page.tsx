@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/site"
 import ServicePage from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     description:
       "Consultoría digital profesional en Madrid. Auditoría web, estrategia SEO y plan de marketing para empresas en España y Latinoamérica.",
     url: "https://digitalleveling.com/servicios/consultoria-digital",
+    images: [OG_IMAGE],
   },
 }
 
@@ -116,6 +118,8 @@ const faqs = [
 export default function ConsultoriaDigitalPage() {
   return (
     <ServicePage
+      path="/servicios/consultoria-digital"
+      serviceName="Consultoría digital"
       badge="🚀 Consultoría Digital Madrid"
       title="Consultoría Digital"
       titleHighlight="para Empresas"

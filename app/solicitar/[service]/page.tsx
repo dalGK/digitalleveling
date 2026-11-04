@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 import ServiceRequest from "@/components/sections/ServiceRequest"
+import { SITE_URL } from "@/lib/site"
 
 interface ServiceRequestPageProps {
   params: Promise<{
@@ -29,6 +30,9 @@ export async function generateMetadata({ params }: ServiceRequestPageProps) {
   return {
     title: `Solicitar ${serviceName}`,
     description: `Solicita nuestro servicio de ${serviceName}. Formulario personalizado con propuesta detallada.`,
+    alternates: { canonical: `${SITE_URL}/solicitar/${service}` },
+    // Formularios sin contenido propio: el contenido indexable está en /servicios/*
+    robots: { index: false, follow: true },
   }
 }
 

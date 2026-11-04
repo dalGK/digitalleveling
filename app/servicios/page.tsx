@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/site"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Servicios de Diseño Web y SEO para Empresas en España",
+  title: "Servicios de Diseño Web, SEO y Automatización para Empresas",
   description:
-    "Diseño web, SEO, aplicaciones a medida, e-commerce y marketing digital para empresas en España. Agencia digital con foco en resultados y proyectos internacionales. Presupuesto gratuito.",
+    "Diseño web, SEO, automatización de WhatsApp y reservas, aplicaciones a medida, tiendas online y Google Ads para empresas en España. Diagnóstico y presupuesto gratuitos.",
   alternates: {
     canonical: "https://digitalleveling.com/servicios",
   },
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     description:
       "Diseño web profesional, SEO y soluciones digitales para empresas en España e internacionalmente.",
     url: "https://digitalleveling.com/servicios",
+    images: [OG_IMAGE],
   },
 }
 
@@ -33,9 +35,19 @@ const primaryServices = [
     badge: "Servicio Principal",
     title: "SEO y Posicionamiento Web",
     description:
-      "Estrategias SEO para aparecer en los primeros resultados de Google y atraer clientes de forma orgánica. Auditoría, técnica, contenidos y reporting mensual.",
+      "Estrategias SEO para ganar visibilidad en Google y atraer clientes de forma orgánica. Auditoría, técnica, contenidos y reporting mensual.",
     price: "Desde 300€/mes",
     tags: ["Auditoría SEO", "SEO Técnico", "Contenidos", "Reporting"],
+  },
+  {
+    href: "/servicios/automatizacion",
+    icon: "⚙️",
+    badge: "Automatización",
+    title: "Automatización de WhatsApp y Reservas",
+    description:
+      "Respuestas automáticas a las preguntas frecuentes, solicitudes de cita y reservas online con confirmación. Atiende mejor a tus clientes y gana tiempo.",
+    price: "Presupuesto a medida",
+    tags: ["WhatsApp", "Reservas", "Confirmaciones", "Recordatorios"],
   },
 ]
 
@@ -63,9 +75,9 @@ const moreServices = [
     href: "/servicios/marketing-digital",
     icon: "📈",
     title: "Marketing Digital",
-    description: "Google Ads, Facebook Ads y email marketing para aumentar tu visibilidad y ventas.",
+    description: "Campañas de Google Ads, email marketing y landing pages para conseguir más contactos y ventas.",
     price: "Desde 300€/mes",
-    tags: ["Google Ads", "Facebook Ads", "Email", "Social"],
+    tags: ["Google Ads", "Email", "Landing Pages", "Analítica"],
   },
   {
     href: "/servicios/consultoria-digital",
@@ -79,9 +91,9 @@ const moreServices = [
     href: "/servicios/gestion-redes-sociales",
     icon: "📲",
     title: "Gestión de Redes Sociales",
-    description: "Community management, contenido creativo y publicidad social para crecer tu marca.",
+    description: "Community management y contenido creativo para hacer crecer tu marca en redes.",
     price: "Desde 100€/mes",
-    tags: ["Instagram", "Community", "Contenido", "Ads"],
+    tags: ["Instagram", "Community", "Contenido", "Estrategia"],
   },
 ]
 
@@ -96,12 +108,12 @@ export default function ServiciosPage() {
               Servicios
             </span>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Diseño Web y SEO{" "}
+              Diseño Web, SEO y Automatización{" "}
               <span className="gradient-text">para Empresas</span>
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Webs profesionales, posicionamiento en Google y soluciones digitales a medida para negocios en España
-              e internacionalmente.
+              Webs profesionales, posicionamiento en Google y automatizaciones que ahorran tiempo a negocios en
+              Madrid, el resto de España e internacionalmente.
             </p>
           </div>
 
@@ -110,7 +122,7 @@ export default function ServiciosPage() {
             <p className="text-yellow-400 text-sm font-semibold uppercase tracking-widest mb-8 text-center">
               Servicios Principales
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {primaryServices.map((service, index) => (
                 <Link
                   key={index}

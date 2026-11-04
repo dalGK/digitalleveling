@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/site"
 import ServicePage from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
   title: "SEO para Empresas en España | Posicionamiento Web en Google",
   description:
-    "Servicio SEO para empresas en España. Auditoría SEO, posicionamiento web, SEO técnico, contenidos y link building para que tu negocio aparezca primero en Google. Presupuesto gratuito.",
+    "Servicio SEO para empresas en España. Auditoría SEO, posicionamiento web, SEO técnico, SEO local, contenidos y link building para ganar visibilidad en Google. Presupuesto gratuito.",
   keywords: [
     "seo españa",
     "agencia seo españa",
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
     description:
       "Servicios SEO profesionales para empresas en España. Posicionamos tu web en Google con estrategias basadas en datos y resultados medibles.",
     url: "https://digitalleveling.com/servicios/seo",
+    images: [OG_IMAGE],
   },
 }
 
@@ -123,11 +125,13 @@ const faqs = [
 export default function SEOPage() {
   return (
     <ServicePage
+      path="/servicios/seo"
+      serviceName="SEO y posicionamiento"
       badge="🔍 SEO para Empresas"
       title="SEO y Posicionamiento Web"
       titleHighlight="para Empresas en España"
       subtitle="Auditoría SEO · SEO Técnico · Contenidos · Link Building · Reporting Mensual"
-      description="Posicionamos tu negocio en los primeros resultados de Google con estrategias SEO basadas en datos y orientadas a resultados. Trabajamos con empresas en España y con clientes internacionales."
+      description="Mejoramos la visibilidad de tu negocio en Google con estrategias SEO basadas en datos y orientadas a conseguir clientes. Trabajamos con empresas en España y con clientes internacionales."
       features={features}
       faqs={faqs}
       price="Desde 300€/mes · Presupuesto personalizado en 24 horas"

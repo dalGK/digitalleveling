@@ -83,7 +83,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
       features: [
         "Estrategia de contenido",
         "Gestión Google Ads",
-        "Campañas Facebook/Instagram",
+        "Landing pages de campaña",
         "Email marketing",
         "SEO y posicionamiento",
         "Analytics y reportes",
@@ -198,9 +198,9 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
             </span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+          <h1 className="text-4xl md:text-6xl font-bold mb-8">
             <span className="gradient-text">{service.title}</span>
-          </h2>
+          </h1>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">{service.description}</p>
         </motion.div>
 
@@ -251,8 +251,8 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
                 },
                 {
                   icon: Shield,
-                  title: "Garantía Incluida",
-                  description: "30 días de garantía en todos nuestros servicios",
+                  title: "Revisiones Incluidas",
+                  description: "Ajustamos el trabajo contigo antes de publicarlo",
                 },
                 {
                   icon: Code,

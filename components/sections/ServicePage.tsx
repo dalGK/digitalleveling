@@ -2,9 +2,12 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { CONSULTATION_URL } from "@/lib/site"
+import { availableServices, SITE_URL, serviceWhatsappUrl } from "@/lib/site"
+import ContactForm from "@/components/forms/ContactForm"
 
 interface Feature {
+  // Ancla opcional para enlazar directamente a una característica (p. ej. #reservas)
+  id?: string
   icon: string
   title: string
   description: string
@@ -16,6 +19,10 @@ interface FAQ {
 }
 
 interface ServicePageProps {
+  // Ruta de la página (p. ej. "/servicios/seo"): se usa en los datos estructurados
+  path: string
+  // Nombre del servicio para el mensaje de WhatsApp, el formulario y el schema
+  serviceName: string
   badge: string
   title: string
   titleHighlight: string
@@ -29,6 +36,8 @@ interface ServicePageProps {
 }
 
 export default function ServicePage({
+  path,
+  serviceName,
   badge,
   title,
   titleHighlight,
@@ -40,10 +49,43 @@ export default function ServicePage({
   ctaText,
   relatedServices,
 }: ServicePageProps) {
+  const url = `${SITE_URL}${path}`
+  const whatsappHref = serviceWhatsappUrl(serviceName.toLowerCase())
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Servicios", item: `${SITE_URL}/servicios` },
+        { "@type": "ListItem", position: 3, name: serviceName, item: url },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: serviceName,
+      description,
+      url,
+      provider: { "@id": `${SITE_URL}/#organization` },
+      areaServed: { "@type": "Country", name: "España" },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    },
+  ]
+
   return (
     <main className="min-h-screen bg-black overflow-x-hidden pt-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       {/* Hero Section */}
-      <section className="section-padding bg-black">
+      <section data-track="service-hero" className="section-padding bg-black">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -60,21 +102,11 @@ export default function ServicePage({
             <p className="text-xl text-yellow-400 font-semibold mb-4">{subtitle}</p>
             <p className="text-xl text-gray-300 leading-relaxed mb-10">{description}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={CONSULTATION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary text-lg"
-              >
-                🚀 {ctaText}
+              <a href="#solicitar" data-cta="presupuesto-servicio" className="btn-primary text-lg">
+                {ctaText}
               </a>
-              <a
-                href={CONSULTATION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary text-lg"
-              >
-                💬 Hablar por WhatsApp
+              <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="btn-secondary text-lg">
+                Hablar por WhatsApp
               </a>
             </div>
           </motion.div>
@@ -105,6 +137,7 @@ export default function ServicePage({
             {features.map((feature, index) => (
               <motion.div
                 key={index}
+                id={feature.id}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.08 }}
@@ -170,30 +203,29 @@ export default function ServicePage({
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="section-padding bg-black">
-        <div className="container mx-auto px-4 text-center max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-          >
+      {/* Formulario de presupuesto */}
+      <section id="solicitar" data-track="service-form" className="section-padding bg-black">
+        <div className="container mx-auto px-4 max-w-2xl">
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              ¿Listo para <span className="gradient-text">empezar</span>?
+              Pide tu <span className="gradient-text">presupuesto</span>
             </h2>
-            <p className="text-gray-300 text-xl mb-10">
-              Cuéntanos tu proyecto y te respondemos en menos de 24 horas con una propuesta personalizada.
+            <p className="text-gray-300 text-xl">
+              Cuéntanos tu proyecto y te respondemos en menos de 24 horas laborables con una propuesta personalizada.
             </p>
-            <a
-              href={CONSULTATION_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary text-lg"
-            >
-              🚀 Solicitar presupuesto por WhatsApp
+          </div>
+          <div className="glass-effect rounded-3xl p-6 sm:p-8">
+            <ContactForm
+              source={`Servicio: ${serviceName}`}
+              defaultService={availableServices.includes(serviceName) ? serviceName : ""}
+            />
+          </div>
+          <p className="text-center text-gray-400 mt-6">
+            ¿Prefieres hablar?{" "}
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:underline">
+              Escríbenos por WhatsApp
             </a>
-          </motion.div>
+          </p>
         </div>
       </section>
     </main>

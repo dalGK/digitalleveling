@@ -90,9 +90,9 @@ export default function ScheduleCall() {
             </span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+          <h1 className="text-4xl md:text-6xl font-bold mb-8">
             Agenda tu <span className="gradient-text">Consulta Gratuita</span>
-          </h2>
+          </h1>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Conversemos sobre tu proyecto sin compromiso. Te ayudamos a definir la mejor estrategia para tu negocio
             digital.
@@ -189,12 +189,12 @@ export default function ScheduleCall() {
 
           {/* Alternative Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="glass-effect rounded-3xl p-8">
+            <div className="glass-effect rounded-3xl p-6 sm:p-8">
               <h3 className="text-2xl font-bold mb-8 text-center">O completa este formulario</h3>
               <p className="text-center text-gray-400 mb-8">
                 Completa tus datos y serás redirigido con la información pre-cargada

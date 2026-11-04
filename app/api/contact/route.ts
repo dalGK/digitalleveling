@@ -4,21 +4,25 @@ import { z } from "zod"
 
 const optionalText = (max: number) => z.string().trim().max(max).optional().default("")
 
-const contactSchema = z.object({
-  source: optionalText(100),
-  name: z.string().trim().min(1).max(120),
-  email: z.string().trim().email().max(200),
-  phone: optionalText(40),
-  company: optionalText(150),
-  service: optionalText(150),
-  budget: optionalText(100),
-  message: optionalText(5000),
-  // Campos extra de formularios específicos (consulta personalizada, solicitud de servicio...)
-  details: z.record(z.string().max(100), z.string().max(5000)).optional().default({}),
-  consent: z.literal(true),
-  // Honeypot: debe llegar vacío
-  website: optionalText(200),
-})
+const contactSchema = z
+  .object({
+    source: optionalText(100),
+    name: z.string().trim().min(1).max(120),
+    email: optionalText(200).refine((v) => v === "" || z.string().email().safeParse(v).success),
+    phone: optionalText(40),
+    company: optionalText(150),
+    business: optionalText(150),
+    service: optionalText(150),
+    budget: optionalText(100),
+    message: optionalText(5000),
+    // Campos extra de formularios específicos (consulta personalizada, solicitud de servicio...)
+    details: z.record(z.string().max(100), z.string().max(5000)).optional().default({}),
+    consent: z.literal(true),
+    // Honeypot: debe llegar vacío
+    website: optionalText(200),
+  })
+  // Basta con un medio de contacto: email o teléfono
+  .refine((data) => data.email || data.phone)
 
 // Límite sencillo en memoria por IP (por instancia): suficiente para frenar envíos repetidos
 const RATE_LIMIT = 5
@@ -91,7 +95,7 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `"Digital Leveling" <${process.env.SMTP_USER}>`,
       to: process.env.MY_EMAIL,
-      replyTo: data.email,
+      replyTo: data.email || undefined,
       subject: `🚀 Nuevo contacto${data.source ? ` (${data.source})` : ""}: ${subjectName}`,
       html: `
         <div style="background:#fff; border-radius:12px; font-family:sans-serif; max-width:560px; margin:auto; border:1px solid #eee; box-shadow:0 4px 16px #0001;">
@@ -106,6 +110,7 @@ export async function POST(req: NextRequest) {
               ${row("📧 Email", data.email)}
               ${row("📱 Teléfono", data.phone)}
               ${row("🏢 Empresa", data.company)}
+              ${row("🏷️ Tipo de negocio", data.business)}
               ${row("🔧 Servicio", data.service)}
               ${row("💸 Presupuesto", data.budget)}
               ${detailRows}
@@ -122,7 +127,14 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error("Error enviando email de contacto:", error)
+    // Dejamos el lead en los logs del servidor para poder recuperarlo si falla el correo
+    console.error("Error enviando email de contacto:", error, {
+      source: data.source,
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      service: data.service,
+    })
     return NextResponse.json({ success: false, error: "send_failed" }, { status: 500 })
   }
 }

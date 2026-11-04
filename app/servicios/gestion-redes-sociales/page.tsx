@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/site"
 import ServicePage from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
   title: "Gestión de Redes Sociales en Madrid | Community Manager",
   description:
-    "Agencia de gestión de redes sociales en Madrid. Community management, contenido creativo y publicidad en Instagram, Facebook y LinkedIn para empresas en España y Latinoamérica. Desde 100€/mes.",
+    "Agencia de gestión de redes sociales en Madrid. Community management y contenido creativo para Instagram, Facebook y LinkedIn para empresas en España y Latinoamérica. Desde 100€/mes.",
   keywords: [
     "gestión redes sociales madrid",
     "community manager madrid",
@@ -23,8 +24,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gestión de Redes Sociales en Madrid | Community Manager | Digital Leveling",
     description:
-      "Community management profesional en Madrid. Contenido creativo y publicidad en Instagram, Facebook y LinkedIn para empresas.",
+      "Community management profesional en Madrid. Contenido creativo para Instagram, Facebook y LinkedIn para empresas.",
     url: "https://digitalleveling.com/servicios/gestion-redes-sociales",
+    images: [OG_IMAGE],
   },
 }
 
@@ -52,12 +54,6 @@ const features = [
     title: "Estrategia de Contenidos",
     description:
       "Plan editorial mensual alineado con tus objetivos de negocio. Contenido que genera engagement y convierte.",
-  },
-  {
-    icon: "📢",
-    title: "Publicidad Social",
-    description:
-      "Campañas de Instagram Ads, Facebook Ads y LinkedIn Ads. Segmentación avanzada para llegar a tu cliente ideal.",
   },
   {
     icon: "🎬",
@@ -116,11 +112,13 @@ const faqs = [
 export default function GestionRedesSocialesPage() {
   return (
     <ServicePage
+      path="/servicios/gestion-redes-sociales"
+      serviceName="Gestión de redes sociales"
       badge="📲 Redes Sociales Madrid"
       title="Gestión de Redes Sociales"
       titleHighlight="Profesional"
       subtitle="Community Manager · Contenido · Instagram · LinkedIn"
-      description="Gestionamos tus redes sociales con estrategia y creatividad. Community management, contenido de calidad y publicidad social para empresas en Madrid, España y Latinoamérica."
+      description="Gestionamos tus redes sociales con estrategia y creatividad. Community management, contenido de calidad y estrategia para empresas en Madrid, España y Latinoamérica."
       features={features}
       faqs={faqs}
       price="Desde 100€/mes · Sin permanencia mínima"

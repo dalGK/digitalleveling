@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/site"
 import ServicePage from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     description:
       "Diseño web profesional para empresas en España con Next.js y React. Páginas web rápidas, responsivas y optimizadas para posicionar en Google. Desde 300€.",
     url: "https://digitalleveling.com/servicios/desarrollo-web-madrid",
+    images: [OG_IMAGE],
   },
 }
 
@@ -114,6 +116,8 @@ const faqs = [
 export default function DesarrolloWebMadridPage() {
   return (
     <ServicePage
+      path="/servicios/desarrollo-web-madrid"
+      serviceName="Diseño y desarrollo web"
       badge="🌐 Diseño y Desarrollo Web"
       title="Diseño Web Profesional"
       titleHighlight="para Empresas en España"

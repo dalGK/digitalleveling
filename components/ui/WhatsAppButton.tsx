@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { whatsappUrl } from "@/lib/site"
 
 export default function WhatsAppButton() {
-  const url = whatsappUrl("Hola, me gustaría obtener información sobre sus servicios de desarrollo web.")
+  const url = whatsappUrl("Hola, me gustaría información sobre vuestros servicios para mi negocio.")
 
   return (
     <motion.a
@@ -12,6 +12,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"
+      data-track="floating-whatsapp"
       className="fixed bottom-6 left-6 z-50 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg"
       style={{ backgroundColor: "#25D366" }}
       initial={{ scale: 0, opacity: 0 }}

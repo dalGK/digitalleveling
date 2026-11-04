@@ -14,7 +14,7 @@ export default function SchemaOrg() {
       height: 180,
     },
     description:
-      "Agencia de diseño web y SEO para empresas en España. Creamos páginas web profesionales y estrategias de posicionamiento para negocios que quieren captar más clientes. Trabajamos en España e internacionalmente.",
+      "Agencia de diseño web, SEO y automatización para negocios en Madrid y toda España. Páginas web profesionales, posicionamiento en Google y automatización de WhatsApp y reservas.",
     foundingDate: "2020",
     contactPoint: [
       {
@@ -53,7 +53,7 @@ export default function SchemaOrg() {
     currenciesAccepted: "EUR",
     paymentAccepted: "Cash, Credit Card, Bank Transfer",
     description:
-      "Agencia de diseño web y SEO para empresas en España. Páginas web profesionales, posicionamiento en Google y soluciones digitales a medida.",
+      "Agencia de diseño web, SEO y automatización en Madrid. Páginas web profesionales, posicionamiento en Google y automatización de WhatsApp y reservas para negocios.",
     address: {
       "@type": "PostalAddress",
       streetAddress: contact.street,
@@ -104,6 +104,8 @@ export default function SchemaOrg() {
       "SEO",
       "Posicionamiento Web",
       "Aplicaciones Web a Medida",
+      "Automatización de WhatsApp",
+      "Sistemas de Reservas",
       "E-commerce",
       "Marketing Digital",
       "Consultoría Digital",
@@ -116,7 +118,8 @@ export default function SchemaOrg() {
     "@id": "https://digitalleveling.com/#website",
     url: "https://digitalleveling.com",
     name: "Digital Leveling",
-    description: "Agencia de diseño web y SEO para empresas en España e internacionalmente",
+    description: "Diseño web, SEO y automatización para negocios en España",
+    inLanguage: "es-ES",
     publisher: {
       "@id": "https://digitalleveling.com/#organization",
     },

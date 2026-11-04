@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/site"
 import ServicePage from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
     description:
       "Aplicaciones web progresivas (PWA) que funcionan como nativas. Offline, push notifications e instalables. Para empresas en España y Latinoamérica.",
     url: "https://digitalleveling.com/servicios/aplicaciones-web",
+    images: [OG_IMAGE],
   },
 }
 
@@ -115,6 +117,8 @@ const faqs = [
 export default function AplicacionesWebPage() {
   return (
     <ServicePage
+      path="/servicios/aplicaciones-web"
+      serviceName="Aplicaciones a medida"
       badge="📱 Aplicaciones Web Madrid"
       title="Desarrollo de Aplicaciones Web"
       titleHighlight="a Medida"

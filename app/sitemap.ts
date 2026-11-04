@@ -8,6 +8,7 @@ const routes: Entry[] = [
   { path: "/servicios", priority: 0.9, changeFrequency: "weekly" },
   { path: "/servicios/desarrollo-web-madrid", priority: 0.9, changeFrequency: "monthly" },
   { path: "/servicios/seo", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/servicios/automatizacion", priority: 0.9, changeFrequency: "monthly" },
   { path: "/servicios/ecommerce", priority: 0.9, changeFrequency: "monthly" },
   { path: "/servicios/aplicaciones-web", priority: 0.8, changeFrequency: "monthly" },
   { path: "/servicios/marketing-digital", priority: 0.8, changeFrequency: "monthly" },

@@ -61,9 +61,15 @@ export const faqs: FAQItem[] = [
     category: "Internacional",
   },
   {
-    question: "¿Qué pasa si no estoy satisfecho con el resultado?",
+    question: "¿Qué pasa si algo no me convence del resultado?",
     answer:
-      "Ofrecemos garantía de satisfacción de 30 días. Si no estás completamente satisfecho con el resultado, trabajaremos contigo para hacer las correcciones necesarias o te devolvemos tu dinero.",
-    category: "Garantía",
+      "Antes de publicar revisamos el trabajo contigo y hacemos los ajustes necesarios hasta que lo apruebes. El número de revisiones y el alcance quedan indicados por escrito en la propuesta.",
+    category: "Proceso",
+  },
+  {
+    question: "¿Qué podéis automatizar en mi negocio?",
+    answer:
+      "Hoy automatizamos la atención por WhatsApp (respuestas a preguntas frecuentes y solicitudes de cita) y las reservas online con confirmación automática. En el diagnóstico gratuito vemos qué tareas repetitivas te hacen perder más tiempo.",
+    category: "Automatización",
   },
 ]

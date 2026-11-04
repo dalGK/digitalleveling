@@ -115,9 +115,9 @@ export default function WorkTogether() {
             </span>
           </motion.div>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+          <h1 className="text-4xl md:text-6xl font-bold mb-8">
             Elige el Plan <span className="gradient-text">Perfecto</span> para tu Proyecto
-          </h2>
+          </h1>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Ofrecemos soluciones escalables adaptadas a cada etapa de tu negocio. Desde startups hasta empresas
             establecidas.

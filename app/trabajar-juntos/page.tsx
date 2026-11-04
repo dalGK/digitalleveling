@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { OG_IMAGE } from "@/lib/site"
 import WorkTogether from "@/components/sections/WorkTogether"
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     description:
       "Planes de desarrollo web desde 300€. Soluciones para startups, pymes y empresas en España y Latinoamérica.",
     url: "https://digitalleveling.com/trabajar-juntos",
+    images: [OG_IMAGE],
   },
 }
 

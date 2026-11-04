@@ -1,8 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Link from "next/link"
-import { CONSULTATION_URL } from "@/lib/site"
 
 export default function About() {
   return (
@@ -29,16 +27,15 @@ export default function About() {
             </motion.div>
 
             <h2 className="text-4xl md:text-6xl font-bold mb-8">
-              Especialistas en <span className="gradient-text">Diseño Web y SEO</span> para Negocios
+              Tecnología al servicio de <span className="gradient-text">tu negocio</span>
             </h2>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Ayudamos a negocios y marcas a crecer en internet diseñando webs profesionales y desarrollando
-              estrategias SEO que generan resultados reales. Trabajamos con empresas en España y con clientes
-              de todo el mundo.
+              Ayudamos a negocios a conseguir más clientes y a ahorrar tiempo con webs profesionales, SEO y
+              automatizaciones útiles. Trabajamos desde Madrid con empresas de toda España y de otros países.
             </p>
 
-            <div className="space-y-6 mb-8">
+            <div className="space-y-6">
               {[
                 {
                   icon: "🌐",
@@ -48,15 +45,15 @@ export default function About() {
                 },
                 {
                   icon: "🔍",
-                  title: "SEO Basado en Datos",
+                  title: "Automatizaciones que Ahorran Tiempo",
                   description:
-                    "Estrategias SEO con análisis de competencia, keywords y resultados medibles mes a mes.",
+                    "WhatsApp y reservas que funcionan solos, para que dediques tu tiempo a atender a tus clientes.",
                 },
                 {
                   icon: "🤝",
                   title: "Relación Directa y Sin Burocracia",
                   description:
-                    "Trato directo con quien trabaja tu proyecto. Sin intermediarios, con respuesta garantizada en 24h.",
+                    "Trato directo con quien trabaja tu proyecto. Sin intermediarios y con respuesta en menos de 24 h laborables.",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -76,23 +73,6 @@ export default function About() {
               ))}
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              
-              <a
-                href={CONSULTATION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-              >
-                📞 Consulta Gratuita
-              </a>
-            </motion.div>
           </motion.div>
 
           {/* Visual */}
@@ -113,7 +93,7 @@ export default function About() {
                   {[
                     { icon: "🌍", label: "España + Internacional", value: "Alcance" },
                     { icon: "⚡", label: "Next.js & React", value: "Stack" },
-                    { icon: "🔍", label: "SEO Avanzado", value: "Posicionamiento" },
+                    { icon: "⚙️", label: "WhatsApp y reservas", value: "Automatización" },
                     { icon: "💬", label: "Respuesta 24h", value: "Soporte" },
                   ].map((item, index) => (
                     <motion.div
