@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: "Aviso Legal",
   description: "Aviso legal y condiciones de uso del sitio web de Digital Leveling.",
   alternates: { canonical: `${SITE_URL}/aviso-legal` },
+  // TODO: quitar noindex cuando las páginas tengan los datos reales del titular
+  robots: { index: false, follow: true },
 }
 
 export default function AvisoLegalPage() {

@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: "Política de Cookies",
   description: "Información sobre el uso de cookies en el sitio web de Digital Leveling.",
   alternates: { canonical: `${SITE_URL}/cookies` },
+  // TODO: quitar noindex cuando las páginas tengan los datos reales del titular
+  robots: { index: false, follow: true },
 }
 
 export default function CookiesPage() {

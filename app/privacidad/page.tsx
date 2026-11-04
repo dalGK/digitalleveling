@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: "Política de Privacidad",
   description: "Cómo trata Digital Leveling los datos personales que nos facilitas a través de la web.",
   alternates: { canonical: `${SITE_URL}/privacidad` },
+  // TODO: quitar noindex cuando las páginas tengan los datos reales del titular
+  robots: { index: false, follow: true },
 }
 
 export default function PrivacidadPage() {
