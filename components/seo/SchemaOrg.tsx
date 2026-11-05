@@ -1,6 +1,6 @@
 import { activeSocialLinks, contact } from "@/lib/site"
 
-// Sin AggregateRating ni Review: no se publican valoraciones sin reseñas reales verificables
+// Sin valoraciones agregadas ni reseñas en el schema hasta tener opiniones reales verificables
 
 export default function SchemaOrg() {
   const organizationSchema = {
