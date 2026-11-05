@@ -51,6 +51,8 @@ export const features = {
   showPricesOnHome: false,
   // Servicios que aún no se ofrecen (Asistentes de IA, CRM, demos "Próximamente")
   showComingSoon: false,
+  // Casos de estudio de ejemplo (/proyecto/[id] y /proyectos/[slug]) con datos ficticios: devuelven 404
+  showExampleProjects: false,
 }
 
 // SEO de la home: title, description y sus variantes para redes

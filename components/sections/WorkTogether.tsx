@@ -12,7 +12,7 @@ export default function WorkTogether() {
     {
       id: "basic",
       name: "Proyecto Básico",
-      price: "$1,500",
+      price: "A medida",
       duration: "2-3 semanas",
       description: "Perfecto para pequeñas empresas que necesitan presencia digital",
       features: [
@@ -27,7 +27,7 @@ export default function WorkTogether() {
     {
       id: "standard",
       name: "Proyecto Estándar",
-      price: "$3,500",
+      price: "A medida",
       duration: "4-6 semanas",
       description: "La opción más popular para empresas en crecimiento",
       features: [
@@ -45,7 +45,7 @@ export default function WorkTogether() {
     {
       id: "premium",
       name: "Proyecto Premium",
-      price: "$7,500",
+      price: "A medida",
       duration: "8-12 semanas",
       description: "Solución completa para empresas establecidas",
       features: [

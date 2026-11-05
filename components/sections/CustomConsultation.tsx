@@ -30,7 +30,7 @@ export default function CustomConsultation() {
       id: "strategy",
       name: "Estrategia Digital",
       icon: Brain,
-      price: "$500",
+      price: "A medida",
       duration: "2-3 sesiones",
       description: "Definimos tu estrategia digital completa",
       includes: [
@@ -45,7 +45,7 @@ export default function CustomConsultation() {
       id: "technical",
       name: "Consultoría Técnica",
       icon: Target,
-      price: "$400",
+      price: "A medida",
       duration: "1-2 sesiones",
       description: "Soluciones técnicas específicas",
       includes: [
@@ -60,7 +60,7 @@ export default function CustomConsultation() {
       id: "growth",
       name: "Soporte IT",
       icon: TrendingUp,
-      price: "$600",
+      price: "A medida",
       description: "Estrategias de crecimiento acelerado",
       includes: [
         "Análisis de funnel",
@@ -74,7 +74,7 @@ export default function CustomConsultation() {
       id: "innovation",
       name: "Innovación Digital",
       icon: Lightbulb,
-      price: "$700",
+      price: "A medida",
       duration: "4-5 sesiones",
       description: "Innovación y transformación digital",
       includes: [

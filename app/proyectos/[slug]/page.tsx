@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react"
 import { projects } from "@/lib/projects-data"
+import { features } from "@/lib/site"
 
 export function generateStaticParams() {
   return projects.map((project) => ({
@@ -18,6 +19,7 @@ export const metadata = {
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  if (!features.showExampleProjects) notFound()
   const { slug } = await params
   const project = projects.find((p) => p.slug === slug)
 
