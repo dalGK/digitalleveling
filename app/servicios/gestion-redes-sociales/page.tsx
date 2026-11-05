@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
 import { OG_IMAGE } from "@/lib/site"
-import ServicePage from "@/components/sections/ServicePage"
+import ServicePage, { type ServiceFeature } from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
   title: "Gestión de Redes Sociales en Madrid | Community Manager",
   description:
-    "Agencia de gestión de redes sociales en Madrid. Community management y contenido creativo para Instagram, Facebook y LinkedIn para empresas en España y Latinoamérica. Desde 100€/mes.",
+    "Agencia de gestión de redes sociales en Madrid. Community management y contenido creativo para Instagram, Facebook y LinkedIn para empresas en España y Latinoamérica. Presupuesto a medida.",
   keywords: [
     "gestión redes sociales madrid",
     "community manager madrid",
@@ -30,51 +30,51 @@ export const metadata: Metadata = {
   },
 }
 
-const features = [
+const features: ServiceFeature[] = [
   {
-    icon: "📸",
+    icon: "camera",
     title: "Contenido Creativo",
     description:
       "Diseño de posts, Reels, Stories y carruseles con identidad de marca consistente. Calendario editorial mensual.",
   },
   {
-    icon: "💬",
+    icon: "message",
     title: "Community Management",
     description:
       "Gestión de comentarios, mensajes directos y menciones. Construcción de comunidad y relación con tus seguidores.",
   },
   {
-    icon: "📊",
+    icon: "bar-chart",
     title: "Analítica y Reportes",
     description:
       "Informes mensuales de alcance, engagement, crecimiento de seguidores y rendimiento de cada publicación.",
   },
   {
-    icon: "🎯",
+    icon: "target",
     title: "Estrategia de Contenidos",
     description:
       "Plan editorial mensual alineado con tus objetivos de negocio. Contenido que genera engagement y convierte.",
   },
   {
-    icon: "🎬",
+    icon: "clapperboard",
     title: "Video y Reels",
     description:
       "Producción de contenido en video para Reels, TikTok y YouTube Shorts. El formato con mayor alcance orgánico.",
   },
   {
-    icon: "🔗",
+    icon: "link",
     title: "LinkedIn para B2B",
     description:
       "Estrategia de contenidos y networking en LinkedIn para empresas que buscan clientes corporativos.",
   },
   {
-    icon: "📅",
+    icon: "calendar",
     title: "Planificación y Scheduling",
     description:
       "Programación automática de publicaciones en los mejores horarios según tu audiencia y plataforma.",
   },
   {
-    icon: "🌍",
+    icon: "earth",
     title: "Adaptación LATAM",
     description:
       "Contenido adaptado a cada mercado latinoamericano: México, Argentina, Colombia, Chile y más.",
@@ -114,20 +114,20 @@ export default function GestionRedesSocialesPage() {
     <ServicePage
       path="/servicios/gestion-redes-sociales"
       serviceName="Gestión de redes sociales"
-      badge="📲 Redes Sociales Madrid"
+      badge="Redes Sociales Madrid"
       title="Gestión de Redes Sociales"
       titleHighlight="Profesional"
       subtitle="Community Manager · Contenido · Instagram · LinkedIn"
       description="Gestionamos tus redes sociales con estrategia y creatividad. Community management, contenido de calidad y estrategia para empresas en Madrid, España y Latinoamérica."
       features={features}
       faqs={faqs}
-      price="Desde 100€/mes · Sin permanencia mínima"
+      price="Presupuesto a medida · Sin permanencia mínima"
       ctaText="Gestionar mis redes"
       relatedServices={[
-        { href: "/servicios/marketing-digital", label: "📈 Marketing Digital" },
-        { href: "/servicios/desarrollo-web-madrid", label: "🌐 Desarrollo Web" },
-        { href: "/servicios/ecommerce", label: "🛒 E-commerce" },
-        { href: "/servicios/consultoria-digital", label: "🚀 Consultoría Digital" },
+        { href: "/servicios/marketing-digital", label: "Marketing Digital" },
+        { href: "/servicios/desarrollo-web-madrid", label: "Desarrollo Web" },
+        { href: "/servicios/ecommerce", label: "E-commerce" },
+        { href: "/servicios/consultoria-digital", label: "Consultoría Digital" },
       ]}
     />
   )

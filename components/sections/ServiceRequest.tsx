@@ -30,7 +30,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     "web-development": {
       title: "Desarrollo Web Completo",
       description: "Sitios web modernos, rápidos y optimizados",
-      basePrice: "600€",
+      basePrice: "Desde 300€",
       duration: "2-6 semanas",
       features: [
         "Diseño responsive",
@@ -46,7 +46,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     ecommerce: {
       title: "E-commerce Avanzado",
       description: "Tiendas online completas con gestión integral",
-      basePrice: "1,000€",
+      basePrice: "Desde 1.000€",
       duration: "4-8 semanas",
       features: [
         "Catálogo de productos",
@@ -62,7 +62,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     "web-app": {
       title: "Aplicación Web",
       description: "Apps web progresivas y escalables",
-      basePrice: "1000€",
+      basePrice: "Desde 1.000€",
       duration: "6-12 semanas",
       features: [
         "Aplicación web progresiva (PWA)",
@@ -78,7 +78,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     marketing: {
       title: "Marketing Digital",
       description: "Estrategias completas de marketing online",
-      basePrice: "300€",
+      basePrice: "Desde 300€/mes",
       duration: "Mensual",
       features: [
         "Estrategia de contenido",
@@ -94,7 +94,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     consulting: {
       title: "Consultoría Digital",
       description: "Asesoramiento estratégico personalizado",
-      basePrice: "300€",
+      basePrice: "Desde 300€",
       duration: "1-4 semanas",
       features: [
         "Auditoría digital completa",
@@ -110,7 +110,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
     "social-media": {
       title: "Gestión de Redes Sociales",
       description: "Administración completa de redes sociales",
-      basePrice: "100€",
+      basePrice: "Presupuesto a medida",
       duration: "Mensual",
       features: [
         "Gestión de contenido",
@@ -216,7 +216,7 @@ export default function ServiceRequest({ serviceType }: ServiceRequestProps) {
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <h3 className="text-2xl font-bold">{service.title}</h3>
-                  <p className="text-gray-400">Desde {service.basePrice}</p>
+                  <p className="text-gray-400">{service.basePrice}</p>
                 </div>
                 <div className="text-right">
                   <div className="flex items-center space-x-2 text-sm text-gray-400 mb-1">

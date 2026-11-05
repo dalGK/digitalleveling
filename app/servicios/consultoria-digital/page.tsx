@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { OG_IMAGE } from "@/lib/site"
-import ServicePage from "@/components/sections/ServicePage"
+import ServicePage, { type ServiceFeature } from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
   title: "Consultoría Digital en Madrid | Estrategia Web y SEO para Empresas",
@@ -30,57 +30,57 @@ export const metadata: Metadata = {
   },
 }
 
-const features = [
+const features: ServiceFeature[] = [
   {
-    icon: "🔍",
+    icon: "search",
     title: "Auditoría Web Completa",
     description:
       "Análisis técnico, SEO, UX y conversión de tu web actual. Identificamos todos los problemas y oportunidades de mejora.",
   },
   {
-    icon: "📊",
+    icon: "bar-chart",
     title: "Estrategia SEO",
     description:
       "Investigación de palabras clave, análisis de competencia, plan de contenidos y hoja de ruta para posicionar en Google.",
   },
   {
-    icon: "🎯",
+    icon: "target",
     title: "Plan de Marketing Digital",
     description:
       "Estrategia integral: canales de captación, presupuesto, KPIs, métricas y plan de acción para los próximos 12 meses.",
   },
   {
-    icon: "🗺️",
+    icon: "map",
     title: "Hoja de Ruta Tecnológica",
     description:
       "Definición de la arquitectura tecnológica ideal para tu negocio: stack, integraciones, escalabilidad y costes.",
   },
   {
-    icon: "📈",
+    icon: "trending-up",
     title: "Análisis de Competencia",
     description:
       "Benchmarking detallado: qué están haciendo tus competidores en SEO, ads, contenido y redes sociales.",
   },
   {
-    icon: "💡",
+    icon: "lightbulb",
     title: "CRO y Optimización de Conversión",
     description:
       "Análisis de embudos, pruebas A/B, mapas de calor y recomendaciones para convertir más visitantes en clientes.",
   },
   {
-    icon: "🔢",
+    icon: "hash",
     title: "Definición de KPIs",
     description:
       "Establecemos métricas de negocio claras: coste de adquisición, LTV, tasa de conversión y objetivos medibles.",
   },
   {
-    icon: "🤝",
+    icon: "handshake",
     title: "Acompañamiento Continuo",
     description:
       "Reuniones de seguimiento mensuales, revisión de resultados y ajuste de estrategia según la evolución del negocio.",
   },
   {
-    icon: "🌍",
+    icon: "earth",
     title: "Estrategia Internacional",
     description:
       "Plan de expansión digital para mercados de España y Latinoamérica con adaptación local para cada país.",
@@ -120,7 +120,7 @@ export default function ConsultoriaDigitalPage() {
     <ServicePage
       path="/servicios/consultoria-digital"
       serviceName="Consultoría digital"
-      badge="🚀 Consultoría Digital Madrid"
+      badge="Consultoría Digital Madrid"
       title="Consultoría Digital"
       titleHighlight="para Empresas"
       subtitle="Auditoría Web · Estrategia SEO · Plan Marketing · KPIs"
@@ -130,10 +130,10 @@ export default function ConsultoriaDigitalPage() {
       price="Desde 300€ · Primera sesión de diagnóstico gratuita"
       ctaText="Solicitar diagnóstico gratis"
       relatedServices={[
-        { href: "/servicios/desarrollo-web-madrid", label: "🌐 Desarrollo Web" },
-        { href: "/servicios/marketing-digital", label: "📈 Marketing Digital" },
-        { href: "/servicios/ecommerce", label: "🛒 E-commerce" },
-        { href: "/servicios/gestion-redes-sociales", label: "📲 Redes Sociales" },
+        { href: "/servicios/desarrollo-web-madrid", label: "Desarrollo Web" },
+        { href: "/servicios/marketing-digital", label: "Marketing Digital" },
+        { href: "/servicios/ecommerce", label: "E-commerce" },
+        { href: "/servicios/gestion-redes-sociales", label: "Redes Sociales" },
       ]}
     />
   )

@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { OG_IMAGE } from "@/lib/site"
-import ServicePage from "@/components/sections/ServicePage"
+import ServicePage, { type ServiceFeature } from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
   title: "Automatización de WhatsApp y Reservas Online",
@@ -18,40 +18,40 @@ export const metadata: Metadata = {
   },
 }
 
-const features = [
+const features: ServiceFeature[] = [
   {
-    icon: "💬",
+    icon: "message",
     title: "Respuestas automáticas en WhatsApp",
     description:
       "Horarios, precios, ubicación, servicios: las preguntas de siempre se responden al momento, también fuera de horario.",
   },
   {
-    icon: "🗓️",
+    icon: "calendar-days",
     title: "Solicitud de cita por WhatsApp",
     description:
       "El cliente pide cita en la misma conversación y tú recibes la solicitud ordenada, con los datos que necesitas.",
   },
   {
-    icon: "🙋",
+    icon: "user",
     title: "Paso a una persona cuando hace falta",
     description:
       "Si la consulta no es de las habituales, la conversación pasa a tu equipo con todo el contexto. Nadie se queda sin respuesta.",
   },
   {
     id: "reservas",
-    icon: "📅",
+    icon: "calendar",
     title: "Sistema de reservas online",
     description:
       "Tus clientes reservan desde tu web cuando les viene bien, solo en los huecos que tienes libres. Sin llamadas ni mensajes de ida y vuelta.",
   },
   {
-    icon: "✅",
+    icon: "check",
     title: "Confirmaciones y recordatorios",
     description:
       "Cada reserva recibe su confirmación automática y un recordatorio antes de la cita, para reducir olvidos y huecos vacíos.",
   },
   {
-    icon: "🔧",
+    icon: "wrench",
     title: "Adaptado a tu forma de trabajar",
     description:
       "Partimos de cómo atiendes hoy a tus clientes y automatizamos solo lo que te ahorra tiempo de verdad.",
@@ -91,7 +91,7 @@ export default function AutomatizacionPage() {
     <ServicePage
       path="/servicios/automatizacion"
       serviceName="Automatización de WhatsApp"
-      badge="⚙️ Automatización"
+      badge="Automatización"
       title="Automatización de WhatsApp"
       titleHighlight="y reservas online"
       subtitle="Respuestas automáticas · Solicitud de citas · Reservas · Confirmaciones"
@@ -101,9 +101,9 @@ export default function AutomatizacionPage() {
       price="Presupuesto a medida · Diagnóstico gratuito"
       ctaText="Pedir presupuesto"
       relatedServices={[
-        { href: "/servicios/desarrollo-web-madrid", label: "🌐 Diseño y Desarrollo Web" },
-        { href: "/servicios/aplicaciones-web", label: "⚙️ Aplicaciones Web a Medida" },
-        { href: "/servicios/seo", label: "🔍 SEO y Posicionamiento" },
+        { href: "/servicios/desarrollo-web-madrid", label: "Diseño y Desarrollo Web" },
+        { href: "/servicios/aplicaciones-web", label: "Aplicaciones Web a Medida" },
+        { href: "/servicios/seo", label: "SEO y Posicionamiento" },
       ]}
     />
   )

@@ -4,11 +4,12 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { availableServices, SITE_URL, serviceWhatsappUrl } from "@/lib/site"
 import ContactForm from "@/components/forms/ContactForm"
+import BrandIcon, { type IconName } from "@/components/ui/BrandIcon"
 
-interface Feature {
+export interface ServiceFeature {
   // Ancla opcional para enlazar directamente a una característica (p. ej. #reservas)
   id?: string
-  icon: string
+  icon: IconName
   title: string
   description: string
 }
@@ -28,7 +29,7 @@ interface ServicePageProps {
   titleHighlight: string
   subtitle: string
   description: string
-  features: Feature[]
+  features: ServiceFeature[]
   faqs: FAQ[]
   price: string
   ctaText: string
@@ -144,7 +145,9 @@ export default function ServicePage({
                 viewport={{ once: true }}
                 className="glass-effect rounded-2xl p-8 card-hover"
               >
-                <div className="text-5xl mb-5">{feature.icon}</div>
+                <div className="mb-5">
+                  <BrandIcon name={feature.icon} />
+                </div>
                 <h3 className="text-xl font-bold mb-3 text-yellow-400">{feature.title}</h3>
                 <p className="text-gray-300 leading-relaxed">{feature.description}</p>
               </motion.div>

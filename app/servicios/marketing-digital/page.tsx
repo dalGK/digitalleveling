@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { OG_IMAGE } from "@/lib/site"
-import ServicePage from "@/components/sections/ServicePage"
+import ServicePage, { type ServiceFeature } from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
   title: "Marketing Digital en Madrid | Google Ads, SEO y Email Marketing",
@@ -29,51 +29,51 @@ export const metadata: Metadata = {
   },
 }
 
-const features = [
+const features: ServiceFeature[] = [
   {
-    icon: "🔍",
+    icon: "search",
     title: "Google Ads (SEM)",
     description:
       "Campañas de búsqueda, display, shopping y YouTube Ads. Gestión orientada a ROI máximo con optimización continua.",
   },
   {
-    icon: "📧",
+    icon: "mail",
     title: "Email Marketing",
     description:
       "Automatizaciones de captación, nurturing y fidelización. Secuencias de bienvenida, carros abandonados y newsletters.",
   },
   {
-    icon: "🎯",
+    icon: "target",
     title: "Estrategia y Funnel",
     description:
       "Diseño completo del embudo de ventas: captación, consideración, conversión y fidelización. Todo orientado a resultados.",
   },
   {
-    icon: "📊",
+    icon: "bar-chart",
     title: "Analítica y Reporting",
     description:
       "Reportes mensuales claros con métricas de negocio: coste por lead, ROI, ROAS y evolución de las campañas.",
   },
   {
-    icon: "🔁",
+    icon: "repeat",
     title: "Retargeting",
     description:
       "Impacta a usuarios que ya visitaron tu web. Campañas de remarketing en Google para recuperar clientes potenciales.",
   },
   {
-    icon: "🌐",
+    icon: "globe",
     title: "SEO On-Page y Técnico",
     description:
       "Optimización de contenidos, estructura, velocidad y Schema markup para mejorar el posicionamiento orgánico en Google.",
   },
   {
-    icon: "🤝",
+    icon: "handshake",
     title: "Landing Pages de Conversión",
     description:
       "Creamos páginas de aterrizaje optimizadas para convertir el tráfico de tus campañas en leads y ventas.",
   },
   {
-    icon: "📱",
+    icon: "smartphone",
     title: "Marketing en LinkedIn",
     description:
       "Campañas B2B en LinkedIn para empresas que buscan clientes corporativos. Lead Gen Forms y sponsored content.",
@@ -113,7 +113,7 @@ export default function MarketingDigitalPage() {
     <ServicePage
       path="/servicios/marketing-digital"
       serviceName="Marketing digital"
-      badge="📈 Marketing Digital Madrid"
+      badge="Marketing Digital Madrid"
       title="Marketing Digital"
       titleHighlight="en Madrid"
       subtitle="Google Ads · SEO · Email Marketing · Landing Pages"
@@ -123,10 +123,10 @@ export default function MarketingDigitalPage() {
       price="Desde 300€/mes · Sin permanencia · Resultados medibles"
       ctaText="Quiero más ventas"
       relatedServices={[
-        { href: "/servicios/desarrollo-web-madrid", label: "🌐 Desarrollo Web" },
-        { href: "/servicios/ecommerce", label: "🛒 E-commerce" },
-        { href: "/servicios/gestion-redes-sociales", label: "📲 Redes Sociales" },
-        { href: "/servicios/consultoria-digital", label: "🚀 Consultoría Digital" },
+        { href: "/servicios/desarrollo-web-madrid", label: "Desarrollo Web" },
+        { href: "/servicios/ecommerce", label: "E-commerce" },
+        { href: "/servicios/gestion-redes-sociales", label: "Redes Sociales" },
+        { href: "/servicios/consultoria-digital", label: "Consultoría Digital" },
       ]}
     />
   )

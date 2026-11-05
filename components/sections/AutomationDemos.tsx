@@ -3,9 +3,10 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { features } from "@/lib/site"
+import BrandIcon, { type IconName } from "@/components/ui/BrandIcon"
 
 interface AutomationFlow {
-  icon: string
+  icon: IconName
   title: string
   description: string
   steps: string[]
@@ -17,21 +18,21 @@ interface AutomationFlow {
 
 const flows: AutomationFlow[] = [
   {
-    icon: "📅",
+    icon: "calendar",
     title: "Reservas inteligentes",
     description: "Tu cliente reserva cuando le viene bien y recibe la confirmación al momento, sin llamadas.",
     steps: ["El cliente elige día y hora", "Se bloquea el hueco en tu agenda", "Recibe confirmación y recordatorio"],
     status: "available",
   },
   {
-    icon: "💬",
+    icon: "message",
     title: "WhatsApp automatizado",
     description: "Respuestas inmediatas a las preguntas de siempre y solicitudes de cita ordenadas.",
     steps: ["Llega un mensaje fuera de horario", "Se responden las dudas frecuentes", "Se recoge la petición de cita"],
     status: "available",
   },
   {
-    icon: "📇",
+    icon: "contact",
     title: "Seguimiento comercial",
     description: "Cada nuevo contacto queda registrado y con su siguiente paso asignado.",
     steps: ["Entra un nuevo contacto", "Se registra en el CRM", "Se programa el seguimiento"],
@@ -53,7 +54,7 @@ export default function AutomationDemos() {
           className="text-center mb-16"
         >
           <span className="inline-block bg-yellow-400/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-            ⚙️ Automatizaciones
+            Automatizaciones
           </span>
           <h2 className="text-4xl md:text-6xl font-bold mb-8">
             Tu negocio atendiendo <span className="gradient-text">aunque no estés</span>
@@ -77,9 +78,7 @@ export default function AutomationDemos() {
               className={`glass-effect rounded-2xl p-8 flex flex-col ${flow.status === "comingSoon" ? "opacity-75" : ""}`}
             >
               <div className="flex items-start justify-between mb-5">
-                <span className="text-4xl" aria-hidden="true">
-                  {flow.icon}
-                </span>
+                <BrandIcon name={flow.icon} className="w-10 h-10" />
                 {flow.status === "available" ? (
                   <span className="text-xs px-3 py-1 rounded-full font-semibold bg-yellow-400/20 text-yellow-400 border border-yellow-400/30">
                     Disponible

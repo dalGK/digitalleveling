@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { OG_IMAGE } from "@/lib/site"
-import ServicePage from "@/components/sections/ServicePage"
+import ServicePage, { type ServiceFeature } from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
   title: "Desarrollo de Aplicaciones Web en Madrid | PWA y Web Apps",
@@ -29,57 +29,57 @@ export const metadata: Metadata = {
   },
 }
 
-const features = [
+const features: ServiceFeature[] = [
   {
-    icon: "📱",
+    icon: "smartphone",
     title: "Progressive Web App (PWA)",
     description:
       "Apps instalables en cualquier dispositivo que funcionan sin conexión. La mejor experiencia de usuario sin necesidad de App Store.",
   },
   {
-    icon: "🔔",
+    icon: "bell",
     title: "Push Notifications",
     description:
       "Notificaciones push nativas para re-enganchar a tus usuarios. Mayor retención y engagement sin coste adicional.",
   },
   {
-    icon: "⚡",
+    icon: "zap",
     title: "Offline Mode",
     description:
       "Funcionalidad completa sin internet mediante Service Workers. Tus usuarios siempre pueden acceder a tu app.",
   },
   {
-    icon: "🔐",
+    icon: "key",
     title: "Autenticación Segura",
     description:
       "Login social (Google, Facebook), JWT, OAuth2, autenticación de dos factores y gestión de sesiones segura.",
   },
   {
-    icon: "🗄️",
+    icon: "database",
     title: "Base de Datos en Tiempo Real",
     description:
       "Datos sincronizados en tiempo real entre usuarios. Perfecto para dashboards, chats, sistemas de gestión y más.",
   },
   {
-    icon: "🔗",
+    icon: "link",
     title: "Integración con APIs",
     description:
       "Conexión con cualquier servicio externo: CRMs, ERPs, pasarelas de pago, servicios de terceros y APIs propias.",
   },
   {
-    icon: "📊",
+    icon: "bar-chart",
     title: "Dashboard y Analíticas",
     description:
       "Paneles de control personalizados con métricas de negocio en tiempo real. Toma decisiones basadas en datos.",
   },
   {
-    icon: "🌍",
+    icon: "earth",
     title: "Multiidioma y Multirregión",
     description:
       "Aplicaciones preparadas para escalar internacionalmente. Soporte para múltiples idiomas y monedas.",
   },
   {
-    icon: "🚀",
+    icon: "rocket",
     title: "Escalabilidad Cloud",
     description:
       "Arquitectura en AWS, Vercel o Google Cloud que escala automáticamente según la demanda. Sin límites de crecimiento.",
@@ -119,7 +119,7 @@ export default function AplicacionesWebPage() {
     <ServicePage
       path="/servicios/aplicaciones-web"
       serviceName="Aplicaciones a medida"
-      badge="📱 Aplicaciones Web Madrid"
+      badge="Aplicaciones Web Madrid"
       title="Desarrollo de Aplicaciones Web"
       titleHighlight="a Medida"
       subtitle="PWA · Offline · Push Notifications · Tiempo Real"
@@ -129,10 +129,10 @@ export default function AplicacionesWebPage() {
       price="Desde 1.000€ · Presupuesto personalizado en 24 horas"
       ctaText="Hablar sobre mi app"
       relatedServices={[
-        { href: "/servicios/desarrollo-web-madrid", label: "🌐 Desarrollo Web" },
-        { href: "/servicios/ecommerce", label: "🛒 E-commerce" },
-        { href: "/servicios/consultoria-digital", label: "🚀 Consultoría Digital" },
-        { href: "/servicios/marketing-digital", label: "📈 Marketing Digital" },
+        { href: "/servicios/desarrollo-web-madrid", label: "Desarrollo Web" },
+        { href: "/servicios/ecommerce", label: "E-commerce" },
+        { href: "/servicios/consultoria-digital", label: "Consultoría Digital" },
+        { href: "/servicios/marketing-digital", label: "Marketing Digital" },
       ]}
     />
   )

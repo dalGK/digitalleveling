@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { OG_IMAGE } from "@/lib/site"
-import ServicePage from "@/components/sections/ServicePage"
+import ServicePage, { type ServiceFeature } from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
   title: "Tienda Online y E-commerce en Madrid | Vende por Internet",
@@ -30,56 +30,56 @@ export const metadata: Metadata = {
   },
 }
 
-const features = [
+const features: ServiceFeature[] = [
   {
-    icon: "🛒",
+    icon: "shopping-cart",
     title: "Carrito Inteligente",
     description:
       "Carrito de compra optimizado para conversión. Recuperación de carritos abandonados, descuentos y cupones.",
   },
   {
-    icon: "💳",
+    icon: "credit-card",
     title: "Pagos Seguros",
     description:
       "Integración con Stripe, PayPal, Redsys y transferencia bancaria. Pagos en múltiples monedas para mercados internacionales.",
   },
   {
-    icon: "📦",
+    icon: "package",
     title: "Gestión de Inventario",
     description:
       "Control de stock en tiempo real, alertas de bajo inventario, variantes de producto y gestión de almacén.",
   },
   {
-    icon: "📊",
+    icon: "bar-chart",
     title: "Panel de Administración",
     description: "Dashboard completo para gestionar pedidos, clientes, productos y analíticas de ventas desde un solo lugar.",
   },
   {
-    icon: "🚚",
+    icon: "truck",
     title: "Envíos y Logística",
     description:
       "Integración con empresas de transporte, cálculo automático de envíos, seguimiento de pedidos y etiquetas.",
   },
   {
-    icon: "🔍",
+    icon: "search",
     title: "SEO para E-commerce",
     description:
       "Schema markup de productos, URLs amigables, rich snippets en Google Shopping y optimización de fichas de producto.",
   },
   {
-    icon: "📱",
+    icon: "smartphone",
     title: "Mobile Commerce",
     description:
       "Experiencia de compra perfecta en móvil. El 60% de las compras online se hacen desde el teléfono.",
   },
   {
-    icon: "📧",
+    icon: "mail",
     title: "Email Marketing Integrado",
     description:
       "Automatizaciones de bienvenida, carritos abandonados, recomendaciones de productos y campañas de fidelización.",
   },
   {
-    icon: "📈",
+    icon: "trending-up",
     title: "Analytics de Ventas",
     description:
       "Google Analytics 4, seguimiento de conversiones, embudos de compra y reportes de rendimiento del e-commerce.",
@@ -119,7 +119,7 @@ export default function EcommercePage() {
     <ServicePage
       path="/servicios/ecommerce"
       serviceName="Tiendas online"
-      badge="🛒 E-commerce Madrid"
+      badge="E-commerce Madrid"
       title="Tienda Online Profesional"
       titleHighlight="en Madrid"
       subtitle="Carrito · Pagos Seguros · Inventario · Google Shopping"
@@ -129,10 +129,10 @@ export default function EcommercePage() {
       price="Desde 1.000€ · Presupuesto personalizado en 24 horas"
       ctaText="Crear mi tienda online"
       relatedServices={[
-        { href: "/servicios/desarrollo-web-madrid", label: "🌐 Desarrollo Web" },
-        { href: "/servicios/marketing-digital", label: "📈 Marketing Digital" },
-        { href: "/servicios/gestion-redes-sociales", label: "📲 Redes Sociales" },
-        { href: "/servicios/consultoria-digital", label: "🚀 Consultoría Digital" },
+        { href: "/servicios/desarrollo-web-madrid", label: "Desarrollo Web" },
+        { href: "/servicios/marketing-digital", label: "Marketing Digital" },
+        { href: "/servicios/gestion-redes-sociales", label: "Redes Sociales" },
+        { href: "/servicios/consultoria-digital", label: "Consultoría Digital" },
       ]}
     />
   )

@@ -1,3 +1,5 @@
+import type { IconName } from "@/components/ui/BrandIcon"
+
 export const SITE_URL = "https://digitalleveling.com"
 
 // Imagen para compartir en redes. Hay que incluirla en cada openGraph de página:
@@ -80,7 +82,7 @@ export interface ServiceItem {
 
 export interface ServiceGroup {
   id: string
-  icon: string
+  icon: IconName
   title: string
   description: string
   items: ServiceItem[]
@@ -90,7 +92,7 @@ export interface ServiceGroup {
 export const serviceGroups: ServiceGroup[] = [
   {
     id: "presencia",
-    icon: "🌐",
+    icon: "globe",
     title: "Presencia digital",
     description: "Una web rápida y profesional que explica bien lo que haces y aparece cuando te buscan.",
     items: [
@@ -101,7 +103,7 @@ export const serviceGroups: ServiceGroup[] = [
   },
   {
     id: "automatizacion",
-    icon: "⚙️",
+    icon: "settings",
     title: "Automatización e IA",
     description: "Menos tareas repetitivas: tus clientes reservan, preguntan y reciben respuesta sin que estés pendiente.",
     items: [
@@ -113,7 +115,7 @@ export const serviceGroups: ServiceGroup[] = [
   },
   {
     id: "captacion",
-    icon: "📈",
+    icon: "trending-up",
     title: "Captación y crecimiento",
     description: "Más contactos cualificados desde Google y un seguimiento ordenado de cada oportunidad.",
     items: [

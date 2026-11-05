@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { OG_IMAGE } from "@/lib/site"
-import ServicePage from "@/components/sections/ServicePage"
+import ServicePage, { type ServiceFeature } from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
   title: "SEO para Empresas en España | Posicionamiento Web en Google",
@@ -32,57 +32,57 @@ export const metadata: Metadata = {
   },
 }
 
-const features = [
+const features: ServiceFeature[] = [
   {
-    icon: "🔍",
+    icon: "search",
     title: "Auditoría SEO Completa",
     description:
       "Análisis técnico y de contenido de tu web. Detectamos errores, oportunidades y prioridades para mejorar tu posicionamiento en Google desde el primer día.",
   },
   {
-    icon: "⚡",
+    icon: "zap",
     title: "SEO Técnico",
     description:
       "Optimización de velocidad, Core Web Vitals, estructura de URLs, datos estructurados y rastreabilidad para que Google indexe correctamente cada página de tu web.",
   },
   {
-    icon: "✍️",
+    icon: "pen",
     title: "Estrategia de Contenidos",
     description:
       "Investigación de palabras clave, planificación editorial y contenido optimizado para posicionar en Google y convertir al lector en cliente.",
   },
   {
-    icon: "🔗",
+    icon: "link",
     title: "Link Building",
     description:
       "Construcción de autoridad web con enlaces de calidad. Estrategias naturales que incrementan la relevancia de tu dominio ante Google.",
   },
   {
-    icon: "📍",
+    icon: "map-pin",
     title: "SEO Local",
     description:
       "Posicionamiento para búsquedas locales en España. Optimización de Google Business Profile, consistencia NAP y presencia en directorios relevantes.",
   },
   {
-    icon: "🌍",
+    icon: "earth",
     title: "SEO Internacional",
     description:
       "Estrategias para posicionarte en mercados internacionales. Implementación de hreflang, estructura multiidioma y optimización por país o región.",
   },
   {
-    icon: "📊",
+    icon: "bar-chart",
     title: "Análisis de Competencia",
     description:
       "Estudiamos a tus competidores para detectar sus debilidades y las oportunidades que puedes aprovechar para superarlos en los resultados de búsqueda.",
   },
   {
-    icon: "📈",
+    icon: "trending-up",
     title: "Informes Mensuales",
     description:
       "Reporting claro con posiciones, tráfico orgánico, conversiones y evolución. Siempre sabes qué estamos haciendo y qué resultados estamos generando.",
   },
   {
-    icon: "🎯",
+    icon: "target",
     title: "Optimización de Conversión",
     description:
       "El tráfico solo tiene valor si convierte. Combinamos SEO con principios de UX y CRO para que las visitas orgánicas se transformen en clientes.",
@@ -127,7 +127,7 @@ export default function SEOPage() {
     <ServicePage
       path="/servicios/seo"
       serviceName="SEO y posicionamiento"
-      badge="🔍 SEO para Empresas"
+      badge="SEO para Empresas"
       title="SEO y Posicionamiento Web"
       titleHighlight="para Empresas en España"
       subtitle="Auditoría SEO · SEO Técnico · Contenidos · Link Building · Reporting Mensual"
@@ -137,10 +137,10 @@ export default function SEOPage() {
       price="Desde 300€/mes · Presupuesto personalizado en 24 horas"
       ctaText="Solicitar auditoría SEO gratuita"
       relatedServices={[
-        { href: "/servicios/desarrollo-web-madrid", label: "🌐 Diseño y Desarrollo Web" },
-        { href: "/servicios/aplicaciones-web", label: "⚙️ Aplicaciones Web a Medida" },
-        { href: "/servicios/consultoria-digital", label: "🚀 Consultoría Digital" },
-        { href: "/servicios/marketing-digital", label: "📈 Marketing Digital" },
+        { href: "/servicios/desarrollo-web-madrid", label: "Diseño y Desarrollo Web" },
+        { href: "/servicios/aplicaciones-web", label: "Aplicaciones Web a Medida" },
+        { href: "/servicios/consultoria-digital", label: "Consultoría Digital" },
+        { href: "/servicios/marketing-digital", label: "Marketing Digital" },
       ]}
     />
   )

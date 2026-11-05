@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
 import { OG_IMAGE } from "@/lib/site"
-import ServicePage from "@/components/sections/ServicePage"
+import ServicePage, { type ServiceFeature } from "@/components/sections/ServicePage"
 
 export const metadata: Metadata = {
-  title: "Diseño y Desarrollo Web para Empresas en España",
+  title: "Diseño y Desarrollo Web en Madrid",
   description:
-    "Diseño y desarrollo web profesional para empresas en España. Creamos páginas web con Next.js y React, optimizadas para SEO y conversión. Proyectos en toda España e internacionalmente. Desde 300€.",
+    "Diseño y desarrollo web profesional en Madrid. Webs a medida con Next.js y React, optimizadas para SEO y conversión, con trato directo con quien programa tu web. Desde 300€.",
   keywords: [
     "diseño web españa",
     "desarrollo web españa",
@@ -22,63 +22,63 @@ export const metadata: Metadata = {
     canonical: "https://digitalleveling.com/servicios/desarrollo-web-madrid",
   },
   openGraph: {
-    title: "Diseño y Desarrollo Web para Empresas en España | Digital Leveling",
+    title: "Diseño y Desarrollo Web en Madrid | Digital Leveling",
     description:
-      "Diseño web profesional para empresas en España con Next.js y React. Páginas web rápidas, responsivas y optimizadas para posicionar en Google. Desde 300€.",
+      "Diseño y desarrollo web a medida en Madrid con Next.js y React. Webs rápidas, responsivas y optimizadas para posicionar en Google. Desde 300€.",
     url: "https://digitalleveling.com/servicios/desarrollo-web-madrid",
     images: [OG_IMAGE],
   },
 }
 
-const features = [
+const features: ServiceFeature[] = [
   {
-    icon: "⚡",
+    icon: "zap",
     title: "Velocidad y Performance",
     description:
       "Sitios web ultrarrápidos con Next.js que cargan en menos de 1 segundo. Core Web Vitals optimizados para Google.",
   },
   {
-    icon: "📱",
+    icon: "smartphone",
     title: "Diseño Responsivo Mobile-First",
     description:
       "Tu web perfecta en cualquier dispositivo: móvil, tablet y escritorio. Más del 70% del tráfico viene de móvil.",
   },
   {
-    icon: "🔍",
+    icon: "search",
     title: "SEO Técnico Incluido",
     description:
       "Estructura semántica, meta tags, Schema markup, sitemap y robots.txt configurados desde el primer día.",
   },
   {
-    icon: "🎨",
+    icon: "palette",
     title: "Diseño UI/UX Profesional",
     description:
       "Interfaces modernas, atractivas y orientadas a la conversión. Tu web como herramienta de ventas, no solo presencia.",
   },
   {
-    icon: "🔒",
+    icon: "lock",
     title: "Seguridad y HTTPS",
     description: "SSL, protección contra ataques, copias de seguridad automáticas y actualizaciones de seguridad.",
   },
   {
-    icon: "📊",
+    icon: "bar-chart",
     title: "Analytics y Seguimiento",
     description:
       "Integración con Google Analytics 4, Search Console y herramientas de seguimiento de conversiones.",
   },
   {
-    icon: "🛠️",
+    icon: "hammer",
     title: "Panel de Administración",
     description:
       "Actualiza tu contenido de forma autónoma con un CMS intuitivo. Sin conocimientos técnicos necesarios.",
   },
   {
-    icon: "🚀",
+    icon: "rocket",
     title: "Despliegue y Hosting",
     description: "Deploy en Vercel o AWS con CDN global. Tu web disponible 24/7 con uptime del 99.9%.",
   },
   {
-    icon: "🤝",
+    icon: "handshake",
     title: "Soporte Post-Lanzamiento",
     description:
       "30 días de soporte incluido tras el lanzamiento. Planes de mantenimiento mensual disponibles.",
@@ -118,9 +118,9 @@ export default function DesarrolloWebMadridPage() {
     <ServicePage
       path="/servicios/desarrollo-web-madrid"
       serviceName="Diseño y desarrollo web"
-      badge="🌐 Diseño y Desarrollo Web"
-      title="Diseño Web Profesional"
-      titleHighlight="para Empresas en España"
+      badge="Diseño y Desarrollo Web"
+      title="Diseño y desarrollo web"
+      titleHighlight="en Madrid"
       subtitle="Next.js · React · Diseño Responsivo · SEO Técnico Incluido"
       description="Creamos páginas web rápidas, modernas y optimizadas para Google. Desde landing pages hasta sitios corporativos completos. Trabajamos con empresas en España e internacionalmente."
       features={features}
@@ -128,10 +128,10 @@ export default function DesarrolloWebMadridPage() {
       price="Desde 300€ · Presupuesto personalizado en 24 horas"
       ctaText="Solicitar presupuesto gratuito"
       relatedServices={[
-        { href: "/servicios/seo", label: "🔍 SEO y Posicionamiento Web" },
-        { href: "/servicios/aplicaciones-web", label: "⚙️ Aplicaciones Web a Medida" },
-        { href: "/servicios/ecommerce", label: "🛒 E-commerce" },
-        { href: "/servicios/marketing-digital", label: "📈 Marketing Digital" },
+        { href: "/servicios/seo", label: "SEO y Posicionamiento Web" },
+        { href: "/servicios/aplicaciones-web", label: "Aplicaciones Web a Medida" },
+        { href: "/servicios/ecommerce", label: "E-commerce" },
+        { href: "/servicios/marketing-digital", label: "Marketing Digital" },
       ]}
     />
   )
