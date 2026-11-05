@@ -122,7 +122,7 @@ export default function Testimonials() {
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                "
+                &ldquo;
               </motion.div>
 
               {/* Testimonial Text */}
@@ -235,7 +235,7 @@ export default function Testimonials() {
 
                   {/* Text */}
                   <p className="text-gray-300 mb-6 leading-relaxed text-sm italic">
-                    "{testimonial.text.substring(0, 120)}..."
+                    &ldquo;{testimonial.text.substring(0, 120)}...&rdquo;
                   </p>
 
                   {/* Client */}

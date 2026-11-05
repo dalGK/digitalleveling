@@ -73,7 +73,7 @@ const projects = [
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("Todos")
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
+  const [, setHoveredProject] = useState<number | null>(null)
 
   const filteredProjects =
     activeCategory === "Todos" ? projects : projects.filter((project) => project.category === activeCategory)

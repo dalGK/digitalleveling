@@ -2,8 +2,8 @@
 
 import type React from "react"
 import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
-import { Calendar, Clock, Video, Phone, MessageSquare, CheckCircle, ExternalLink } from "lucide-react"
+import { useState } from "react"
+import { Calendar, Clock, Video, MessageSquare, CheckCircle, ExternalLink } from "lucide-react"
 import { contact } from "@/lib/site"
 
 export default function ScheduleCall() {

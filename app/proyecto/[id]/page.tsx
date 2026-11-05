@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation"
 import ProjectDetails from "@/components/sections/ProjectDetails"
+import type { ComponentProps } from "react"
 import { features } from "@/lib/site"
 
 interface ProjectPageProps {
@@ -32,5 +33,5 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 export default async function ProjectPage({ params }: ProjectPageProps) {
   if (!features.showExampleProjects) notFound()
   const { id } = await params
-  return <ProjectDetails projectId={id as any} />
+  return <ProjectDetails projectId={id as ComponentProps<typeof ProjectDetails>["projectId"]} />
 }

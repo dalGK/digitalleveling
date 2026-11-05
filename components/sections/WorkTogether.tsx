@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { Calendar, Clock, Users, Target, CheckCircle, ArrowRight } from "lucide-react"
+import { Clock, Users, Target, CheckCircle, ArrowRight } from "lucide-react"
 import { CONSULTATION_URL } from "@/lib/site"
 
 export default function WorkTogether() {
-  const [selectedPlan, setSelectedPlan] = useState("standard")
+  const [, setSelectedPlan] = useState("standard")
 
   const plans = [
     {
